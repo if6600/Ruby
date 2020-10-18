@@ -1,27 +1,61 @@
+$font-stack:    Roboto, sans-serif;
+
 body {
+  position: absolute;
   background-color: #fff;
   color: #333;
-  margin: 33px; }
-
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  margin: 33px;
+  font: 100% $font-stack;
   font-size: 13px;
-  line-height: 18px; }
+  line-height: 18px;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  height: 30%;
+  text-align: center;
+  margin: -10% 0 0 -15%;
+  cursor: default;
+  z-index: 50; }
+
+  p {
+    text-align: center;
+    background-color: none; }
+
+  ol {
+    text-align: center; }
+
+  ul {
+    text-align: center; }
+
+  td {
+    text-align: center; }
 
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px; }
 
+div.block {
+  position: absolute;
+  background-color: #FFB1DA;
+  top: -10%;
+  left: -5%;
+  width: 110%;
+  height: 100%;
+  opacity: 12%;
+  text-align: center;
+  z-index: -5;
+  border-radius: 20px; }
+
 a {
-  color: #000; }
+  color: #666;
+  text-decoration: none; }
 
 a:visited {
   color: #666; }
 
 a:hover {
-  color: #fff;
-  background-color: #000; }
+  color: #fff; }
 
 th {
   padding-bottom: 5px; }
