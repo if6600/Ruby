@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
-<div class="posts22"><h1>Посты</h1></div>
-<div class="telo2">
+<div class="poststitle"><h1>Посты 💕</h1></div>
+<div class="posts22">
 <table>
   <thead>
     <tr>
+      <div class="posts22">
       <th>Название</th>
       <th>Заголовок</th>
       <th>Автор</th>
@@ -11,9 +12,11 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
+</div>
   <tbody>
-    <div class="telo2">
+    <div class="decorate"></div>
+    <div class="content2">
+      <div class="block5">
     <% @posts.each do |post| %>
       <tr>
         <td><%= post.name %></td>
@@ -25,7 +28,7 @@
       </tr>
     <% end %>
 </div>
-    <div class="block"></div>
+</div>
   </tbody>
 </table>
 

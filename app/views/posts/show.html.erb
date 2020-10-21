@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<div class="content_comments">
+<div class="heart4"></div>
+<%#
 <p>
   <strong>Имя:</strong>
   <%= @post.name %>
-</p>
+<div class="block8">
 <%# <%= link_to(image_tag(@post.image.thumb.url, alt: 'Image'), @post.image.url, target: '_blank') if @post.image? %>
 <br>
 <%# <%= link_to(image_tag(@post.image.small_thumb.url, alt: 'Image'), @post.image.url, target: '_blank') if @post.image? %>
@@ -16,7 +18,7 @@
 </p>
 
 <p>
-	<strong>Author:</strong>
+	<strong>Автор:</strong>
 	<%= @post.author1 %>
 </p>
 
@@ -24,12 +26,25 @@
   <strong>Контент:</strong>
   <%= @post.content %>
 </p>
-
+</div>
+<br>
+<br>
+<div class="block_comments">
 <h2>Комментарии</h2>
 <%= render @post.comments %>
-
+</div>
+<br>
+<br>
+<div class="hideblock"></div>
+<div class="block_createcomments">
 <h2>Добавить комментарий:</h2>
 <%= render "comments/form" %>
 
-<%= link_to 'Изменить', edit_post_path(@post) %> |
+<div class="button6">
+<%= link_to 'Изменить', edit_post_path(@post) %>
+</div>
+<div class="button7">
 <%= link_to 'Вернуться', posts_path %>
+</div>
+</div>
+</div>
