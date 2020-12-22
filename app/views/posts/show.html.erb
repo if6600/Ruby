@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <div class="content_comments">
 <div class="heart4"></div>
 <%#
@@ -18,19 +17,44 @@
 </p>
 
 <p>
+  <strong>Категория:</strong>
+  <%= @post.category.name %>
+</p>
+
+<p>
 	<strong>Автор:</strong>
-	<%= @post.author1 %>
+	<%= @post.user_id %>
 </p>
 
 <p>
   <strong>Контент:</strong>
-  <%= @post.content %>
+  <%= @post.content.html_safe %>
 </p>
+<p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+  <p><%= @post.favorites.count %> <%= (@post.favorites.count) == 1 ? 'Favorite' : 'Favorites'%></p>
+  
+<% if user_signed_in? %>
+  <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+  <% if pre_like %>
+    <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+  <% else %>
+    <%= button_to 'Like', post_likes_path(@post), method: :post %>
+  <% end %>
+
+  <% pre_favorite = @post.favorites.find { |favorite| favorite.user_id == current_user.id} %>
+  <% if pre_favorite %>
+    <%= button_to 'Remove from Favorite', post_favorite_path(@post, pre_favorite), method: :delete %>
+  <% else %>
+    <%= button_to 'Add to Favorite', post_favorites_path(@post), method: :post %>
+<% end %>
+
+<% end %>
 </div>
 <br>
 <br>
 <div class="block_comments">
 <h2>Комментарии</h2>
+<div class="heartcomment"></div>
 <%= render @post.comments %>
 </div>
 <br>
@@ -38,11 +62,17 @@
 <div class="hideblock"></div>
 <div class="block_createcomments">
 <h2>Добавить комментарий:</h2>
+<% if user_signed_in? %>
+<%= render "comments/form" %>
+<% else %>
+<p>Please <%= link_to 'login', new_user_session_path %> or <%= link_to 'register', new_user_registration_path %> to comment.</p>
+<% end %>
 <%= render "comments/form" %>
 
 <div class="button6">
-<%= link_to 'Изменить', edit_post_path(@post) %>
-</div>
+  <% if user_signed_in? %>
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <% end %>
 <div class="button7">
 <%= link_to 'Вернуться', posts_path %>
 </div>

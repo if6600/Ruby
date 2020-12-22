@@ -13,9 +13,26 @@
     <%= stylesheet_link_tag 'about', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag Ckeditor.cdn_url %>
   </head>
 
   <body>
+    <% if notice %>
+    <p class="notice"><%= notice %></p>
+    <% elsif alert %>
+    <p class="alert"><%= alert %></p>
+    <% end %>
+
+    <div class="top_menu">
+  <% Category.where(display_in_navbar: true).each do |cat| %>
+    <%= link_to cat.name, posts_path(category: cat.name) %> |
+  <% end %>|
+  <% if user_signed_in? %>
+    <%= link_to 'Account', current_user %> | <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to 'Sign In', new_user_session_path %> | <%= link_to 'Sign Up', new_user_registration_path %>
+  <% end %>
+</div>
     <%= yield %>
   </body>
 </html>

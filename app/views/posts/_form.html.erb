@@ -23,6 +23,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :category_id %>
+    <%= form.select :category_id, Category.pluck(:name, :id) %>
+  </div>
+
+  <div class="field">
 	  <%= form.label :image %>
     <%# <%= link_to(image_tag(@post.image.thumb.url, alt: 'Image'), @post.image.url, target: '_blank') if @post.image? %>
 	  <%= form.file_field :image %>
@@ -30,12 +35,12 @@
 
   <div class="field">
   	<%= form.label :author1 %>
-  	<%= form.text_field :author1 %>
+  	<%= form.cktext_area :author1 %>
   </div>
 
   <div class="field">
     <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.cktext_area :content %>
   </div>
 
   <div class="actions">
