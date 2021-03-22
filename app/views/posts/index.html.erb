@@ -5,9 +5,9 @@
 	<%= link_to cat.name, posts_path(category: cat.name) %> <br>
 <% end %>
 <table>
+  <div class="posts22">
   <thead>
     <tr>
-      <div class="posts22">
       <th>Название</th>
       <th>Заголовок</th>
       <th>Автор</th>
@@ -43,3 +43,4 @@
 
 <div class="button3"><%= link_to 'Новый пост', new_post_path %></div>
 <%= link_to 'New Category', new_category_path %>
+</div>
