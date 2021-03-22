@@ -1,0 +1,16 @@
+<h2>Search Results for: <i><%= params[:term] %></i></h2>
+
+<% if @posts %>
+<ul class="search_results">
+  <% @posts.each do |post| %>
+    <li>
+      <h3>
+        <%= link_to post.title, controller: "posts", action: "show", id: post.id %>
+      </h3>
+      <p><%= post.content.html_safe %></p>
+    </li>
+  <% end %>
+</ul>
+<% else %>
+  <p>Your search did not match any documents.</p>
+<% end %>
