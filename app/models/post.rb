@@ -1,4 +1,11 @@
+	require 'elasticsearch/model'
 class Post < ApplicationRecord
+
+		include Elasticsearch::Model
+		include Elasticsearch::Model::Callbacks
+
+		searchkick
+
 		validates :name, :presence => true
 		validates :title, :presence => true,
 											:length => { :minimum => 5 }

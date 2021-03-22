@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get 'about', to: 'about#index'
 
   root 'promo#index'
+  
+  get "search", to: "search#search"
 
   get 'users', to: 'users#index'
   get 'users/:id' => 'users#show'

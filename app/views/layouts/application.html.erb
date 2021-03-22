@@ -17,6 +17,7 @@
   </head>
 
   <body>
+    <%= react_component 'Tests' %>
     <% if notice %>
     <p class="notice"><%= notice %></p>
     <% elsif alert %>
@@ -24,15 +25,16 @@
     <% end %>
 
     <div class="top_menu">
-  <% Category.where(display_in_navbar: true).each do |cat| %>
-    <%= link_to cat.name, posts_path(category: cat.name) %> |
-  <% end %>|
-  <% if user_signed_in? %>
-    <%= link_to 'Account', current_user %> | <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'Sign In', new_user_session_path %> | <%= link_to 'Sign Up', new_user_registration_path %>
-  <% end %>
-</div>
+      <%= render 'search/form' %>
+      <% Category.where(display_in_navbar: true).each do |cat| %>
+        <%= link_to cat.name, posts_path(category: cat.name) %> |
+      <% end %>|
+      <% if user_signed_in? %>
+        <%= link_to 'Account', current_user %> | <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Sign In', new_user_session_path %> | <%= link_to 'Sign Up', new_user_registration_path %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
