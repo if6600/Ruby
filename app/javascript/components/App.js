@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import A_textblock from './A_textblock'
 
-class Tests extends React.Component {
+class App extends React.Component {
   render () {
     return (
       <div>
@@ -15,4 +15,4 @@ class Tests extends React.Component {
   }
 }
 
-export default Tests
+export default App
