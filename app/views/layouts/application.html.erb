@@ -19,23 +19,27 @@
 
 <body>
 <header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
-  <p class="h5 my-0 me-md-auto fw-normal">PetApp</p>
+  <p class="h5 my-0 me-md-auto fw-normal" href="/public/images/Ё.png" type="image/png"></p>
   <nav class="my-2 my-md-0 me-md-3">
-    <% Category.where(display_in_navbar: true).each do |cat| %>
-      <%= link_to cat.name, posts_path(category: cat.name), class: "p-2 text-dark" %>
-    <% end %>
+    <a class="link-secondary" href="http://localhost:3000/">Главная</a>
+    <a class="link-secondary" href="http://localhost:3000/posts">Обучение</a>
+    <a class="link-secondary" href="#">Благотворительность</a>
+    <a class="link-secondary" href="#">Бонусы</a>
   </nav>
+
 
   <%= render 'search/form' %>
 
   <% if user_signed_in? %>
-    <%= link_to 'Account', current_user, class: "btn btn-outline-primary" %>
-    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary" %>
+    <%= link_to 'Аккаунт', current_user, class: "btn btn-outline-primary" %>
+    <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary" %>
   <% else %>
-    <%= link_to 'Sign In', new_user_session_path, class: "btn btn-outline-primary me-1" %>
-    <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-outline-primary" %>
+    <%= link_to 'Вход', new_user_session_path, class: "btn btn-outline-primary me-1 rounded-pill border border-dark" %>
+    <%= link_to 'Регистрация', new_user_registration_path, class: "btn btn-outline-primary rounded-pill custom_color" %>
   <% end %>
 </header>
+
+
 
 <% if notice %>
   <p class="notice"><%= notice %></p>
@@ -45,31 +49,22 @@
 
 <%= yield %>
 
-<footer class="pt-4 my-md-5 border-top px-md-4">
+<footer class="pt-4 my-md-5 border-top px-md-4 color_footer">
   <div class="row">
     <div class="col-12 col-md">
       <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Cool stuff</a></li>
-        <li><a class="link-secondary" href="#">Random feature</a></li>
-        <li><a class="link-secondary" href="#">Team feature</a></li>
-        <li><a class="link-secondary" href="#">Stuff for developers</a></li>
+        <li><a class="link-secondary text-light" href="#">О нас</a></li>
+        <li><a class="link-secondary text-light" href="#">Присоединиться</a></li>
+        <li><a class="link-secondary text-light" href="#">Конфиденциальность</a></li>
+        <li><a class="link-secondary text-light" href="#">Наша команда</a></li>
       </ul>
-      <small class="d-block mb-3 text-muted">© 2021 Фёрстдог</small>
+      <small class="d-block mb-3 text-light">© 2021 Фёрстдог</small>
     </div>
     <div class="col-6 col-md">
       <h5>Связаться с нами</h5>
       <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Cool stuff</a></li>
-        <li><a class="link-secondary" href="#">Random feature</a></li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5>Resources</h5>
-      <ul class="list-unstyled text-small">
-        <li><a class="link-secondary" href="#">Resource</a></li>
-        <li><a class="link-secondary" href="#">Resource name</a></li>
-        <li><a class="link-secondary" href="#">Another resource</a></li>
-        <li><a class="link-secondary" href="#">Final resource</a></li>
+        <li><class="link-secondary">+7 906 730 48 46</li>
+        <li><class="link-secondary">first@dog.ru</li>
       </ul>
     </div>
     <div class="col-6 col-md">

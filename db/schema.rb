@@ -36,7 +36,9 @@ ActiveRecord::Schema.define(version: 2020_12_16_133010) do
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -70,7 +72,6 @@ ActiveRecord::Schema.define(version: 2020_12_16_133010) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "author"
     t.string "author1"
     t.string "image"
     t.integer "user_id", null: false
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(version: 2020_12_16_133010) do
   end
 
   add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
   add_foreign_key "likes", "posts"

@@ -1,29 +1,29 @@
-<h2>Sign up</h2>
+<main class="form-signin">
+<div class="text-center">
+<h2 class="h3 mb-3 fw-normal">Регистрация</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <label for="inputEmail" class="visually-hidden">Email</label>
+    <%= f.email_field :email, class: "form-control border_color rounded", autofocus: true, autocomplete: "email", placeholder: "Email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, class: "form-control border_color rounded", autocomplete: "new-password", placeholder: "Пароль (не меньше 6 символов)" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, class: "form-control border_color rounded", autocomplete: "new-password", placeholder: "Подтвердить пароль" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Зарегестрироваться", class: "w-100 btn btn-lg btn-primary rounded-pill custom_color", type:"submit" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</main>
+</div>
