@@ -1,48 +1,37 @@
 <div class="poststitle"><h1>Обучение</h1></div>
 <div class="posts22">
-<h3>Все статьи</h3>
-<% Category.all.each do |cat| %>
-	<%= link_to cat.name, posts_path(category: cat.name) %> <br>
-<% end %>
-<table>
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-	<div class="col">
-		<div class="card shadow-sm">
-			<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Pic</text></svg>
+  <h3>Все статьи</h3>
 
-			<div class="card-body">
-  <thead>
-    <tr>
-      <th>Название</th>
-      <th>Заголовок</th>
-      <th>Автор</th>
-      <th>Категория</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-</div>
-  <tbody>
+  <% Category.all.each do |cat| %>
+    <%= link_to cat.name, posts_path(category: cat.name) %> <br>
+  <% end %>
+
+  <div class="row row-cols-3 row-cols-md-6 g-4">
     <% @posts.each do |post| %>
-      <tr>
-        <%= post.name %>
-        <%= post.title %>
-        <%= post.category.name %>
-        <%= post.content.html_safe %>
-        <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%>
-        <%= post.comments.count %> <%= (post.comments.count) == 1 ? 'Comment' : 'Commentes'%>
-        <%= link_to 'Показать', post, class: "btn btn-sm btn-outline-secondary" %>
-        <%= link_to 'Изменить', edit_post_path(post), class: "btn btn-sm btn-outline-secondary" %>
-        <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-sm btn-outline-secondary" %>
-      </tr>
+      <div class="col">
+        <div class="card h-100">
+          <img src="<%= post.image %>" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title"><%= post.title %></h5>
+            <div>
+              <%= post.name %>
+              <%= post.title %>
+              <%= post.category.name %>
+              <%= post.content.html_safe %>
+              <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes' %>
+              <%= post.comments.count %> <%= (post.comments.count) == 1 ? 'Comment' : 'Commentes' %>
+            </div>
+          </div>
+          <div class="card-footer">
+            <%= link_to 'Показать', post, class: "btn btn-sm btn-outline-secondary" %>
+            <%= link_to 'Изменить', edit_post_path(post), class: "btn btn-sm btn-outline-secondary" %>
+            <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-sm btn-outline-secondary" %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
-
-<%= link_to 'Новый пост', new_post_path %>
-<%= link_to 'Новая категория', new_category_path %>
-</div>
-</div>
-</div>
+  <%= link_to 'Новый пост', new_post_path %>
+  <%= link_to 'Новая категория', new_category_path %>
 </div>
