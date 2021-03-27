@@ -8,7 +8,7 @@ class M_catview extends React.Component {
             <p>ID: {this.props.category.id}</p>
             <p>Name: {this.props.category.name}</p>
             <p>Description: {this.props.category.description}</p>
-            <p>Display in Navber: {`${this.props.category.display_in_navbar}`}</p>
+            <p>Display in Navbar: {`${this.props.category.display_in_navbar}`}</p>
       </div>
     );
   }

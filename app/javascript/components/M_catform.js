@@ -21,22 +21,24 @@ class M_catform extends React.Component {
     render() {
       return (
         <div>
-          <label>Name</label>
           <input
+            class="form-control border_color mb-1"
+            placeholder="Название"
             type="text"
             name="category[name]"
             value={this.state.name}
             onChange={this.handleNameChange}
           />
 
-          <label>Description</label>
           <input
+            class="form-control border_color"
+            placeholder="Описание"
             type="text"
             name="category[description]"
             value={this.state.description}
             onChange={this.handleDescriptionChange}
           />
-          <label>Display in Navbar?</label>
+          <label>Показать в меню?</label>
           <input
             defaultChecked={this.props.category.display_in_navbar}
             ref={this.input}
@@ -44,7 +46,7 @@ class M_catform extends React.Component {
             name="category[display_in_navbar]"
           />
 
-          <input type="submit" value="Create category" />
+          <input type="submit" value="Создать категорию" class= "w-100 btn btn-lg btn-primary rounded-pill custom_color mb-1" />
         </div>
       );
     }

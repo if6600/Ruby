@@ -1,24 +1,30 @@
 <p>ID <%= @user.id %></p>
 <p>Email <%= @user.email %></p>
-<p>Username <%= @user.username %></p>
+<p>Никнейм <%= @user.username %></p>
 <% if user_signed_in? && current_user.isadmin == true %>
-  <p>Admin <%= @user.isadmin %></p>
+  <p>Админ <%= @user.isadmin %></p>
 <% end %>
-Followers <%= @user.followers.count %>
-Following <%= link_to @user.followees.count, following_path %>
+<li class="list-inline-item">
+  <h5 class="font-weight-bold mb-0 d-block">Подписчики <%= @user.followers.count %></h5>
+</li>
+<li class="list-inline-item">
+  <h5 class="font-weight-bold mb-0 d-block">Подписки <%= link_to @user.followees.count, following_path %></h5>
+</li>
 <br>
 
-In favorites <%= @user.favorites.count %> <%= (@user.favorites.count) == 1 ? 'Post' : 'Posts'%>
+В избранных <%= @user.favorites.count %> <%= (@user.favorites.count) == 1 ? 'Posts' : 'пост (а, ов)'%>
 <% @posts.each do |post| %>
   <br><%= link_to post.title, post %>
 <% end %>
 
+<br>
+
 <% if user_signed_in? && @user.id == current_user.id %>
-    <%= link_to 'Edit Profile', edit_user_registration_path %>
+    <%= link_to 'Изменить профиль', edit_user_registration_path %>
 <% elsif user_signed_in? && current_user.followees.include?(@user) %>
-    <h5><%= button_to "Unfollow", unfollow_user_path, method: "POST" %></h5>
+    <h5><%= button_to "Отписаться", unfollow_user_path, method: "POST" %></h5>
 <% elsif user_signed_in? %>
-    <h5><%= button_to "Follow", follow_user_path, method: "POST"  %></h5>
+    <h5><%= button_to "Подписаться", follow_user_path, method: "POST"  %></h5>
 <% else %>
 <%# можно добавить кнопку для регистрации или что-нибудь ещё  %>
 <% end%>

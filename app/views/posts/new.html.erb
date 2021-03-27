@@ -1,8 +1,10 @@
-<div class="block7">
-<br>
-<h1>Новый пост 💬</h1>
+<main class="form-signin">
+<div class="text-center">
+<h1 class="h3 mb-3 fw-normal">Новый пост</h1>
 
 <%= render 'form', post: @post %>
-</div>
 
-<div class="button8"><%= link_to 'Вернуться', posts_path %></div>
+
+<%= link_to 'Вернуться', posts_path, class: "w-100 btn btn-lg btn-primary rounded-pill custom_color" %>
+</div>
+</main>

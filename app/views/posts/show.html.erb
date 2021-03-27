@@ -1,10 +1,8 @@
 <div class="content_comments">
-<div class="heart4"></div>
 <%#
 <p>
   <strong>Имя:</strong>
   <%= @post.name %>
-<div class="block8">
 <%# <%= link_to(image_tag(@post.image.thumb.url, alt: 'Image'), @post.image.url, target: '_blank') if @post.image? %>
 <br>
 <%# <%= link_to(image_tag(@post.image.small_thumb.url, alt: 'Image'), @post.image.url, target: '_blank') if @post.image? %>
@@ -32,7 +30,7 @@
 </p>
 <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
   <p><%= @post.favorites.count %> <%= (@post.favorites.count) == 1 ? 'Favorite' : 'Favorites'%></p>
-  
+
 <% if user_signed_in? %>
   <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
   <% if pre_like %>

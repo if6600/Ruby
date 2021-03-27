@@ -13,33 +13,32 @@
 
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control border_color", placeholder: "Название"  %>
+  </div>
+
+<div class="field">
+<%= form.text_field :title, class: "form-control border_color", placeholder: "Титул" %>
+</div>
+
+
+<div class="field">
+  <%= form.text_field :author1, class: "form-control border_color", placeholder: "Автор"  %>
+</div>
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle custom_color" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= form.label :category_id %>
+      <%= form.select :category_id, Category.pluck(:name, :id) %>
+    </button>
   </div>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.select :category_id, Category.pluck(:name, :id) %>
-  </div>
-
-  <div class="field">
-	  <%= form.label :image %>
+    <%= form.label :image %>
     <%# <%= link_to(image_tag(@post.image.thumb.url, alt: 'Image'), @post.image.url, target: '_blank') if @post.image? %>
-	  <%= form.file_field :image %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="field">
-  	<%= form.label :author1 %>
-  	<%= form.cktext_area :author1 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :content %>
     <%= form.cktext_area :content %>
   </div>
 
