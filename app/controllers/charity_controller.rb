@@ -1,4 +1,4 @@
 class CharityController < ApplicationController
-  def charity
+  def index
   end
 end
