@@ -1,18 +1,17 @@
 Rails.application.routes.draw do
-  get 'charity/charity'
   resources :follows
   resources :categories
   mount Ckeditor::Engine => '/ckeditor'
   devise_for :users
   resources :users
   post 'users/:id/follow', to: "users#follow", as: "follow_user"
-	post 'users/:id/unfollow', to: "users#unfollow", as: "unfollow_user"
+  post 'users/:id/unfollow', to: "users#unfollow", as: "unfollow_user"
   #get 'about/index'
   #get 'promo/index'
   resources :posts do
-      resources :comments
-      resources :likes
-      resources :favorites
+    resources :comments
+    resources :likes
+    resources :favorites
   end
   resources :subscribers
   get 'posts/index'
@@ -20,9 +19,10 @@ Rails.application.routes.draw do
   #root 'posts#index'
   get 'promo', to: 'promo#index'
   get 'about', to: 'about#index'
+  get 'charity', to: 'charity#index'
 
   root 'promo#index'
-  
+
   get "search", to: "search#search"
 
   get 'users', to: 'users#index'
