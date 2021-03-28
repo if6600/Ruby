@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'charity/charity'
   resources :follows
   resources :categories
   mount Ckeditor::Engine => '/ckeditor'
