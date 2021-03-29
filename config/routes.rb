@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'bonus/bonuses'
   resources :follows
   resources :categories
   mount Ckeditor::Engine => '/ckeditor'
