@@ -28,7 +28,6 @@
 !/storage/.keep
 
 /public/assets
-/public/images
 /public/uploads
 /public/packs
 /public/packs-test

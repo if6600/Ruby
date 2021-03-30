@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'bonuseshistory/bonuseshistory'
+  get 'partners/partners'
+  get 'bonusespopular/bonusespopular'
+  get 'bonusesinfo/bonusesinfo'
+  get 'login/login'
   get 'bonus/bonuses'
   resources :follows
   resources :categories
@@ -21,6 +26,12 @@ Rails.application.routes.draw do
   get 'promo', to: 'promo#index'
   get 'about', to: 'about#index'
   get 'charity', to: 'charity#index'
+  get 'bonuses', to: 'bonuses#index'
+  get 'login', to: 'login#login'
+  get 'bonusesinfo', to: 'bonusesinfo#bonusesinfo'
+  get 'bonusespopular', to: 'bonusespopular#bonusespopular'
+  get 'partners', to: 'partners#partners'
+  get 'bonuseshistory', to: 'bonuseshistory#bonuseshistory'
 
   root 'promo#index'
 
