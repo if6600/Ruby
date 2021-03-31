@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html class="h-100" lang="ru">
 <head>
   <title>Playground</title>
   <%= csrf_meta_tags %>
@@ -14,30 +14,44 @@
   <%= stylesheet_link_tag 'about', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag Ckeditor.cdn_url %>
+  <script src="https://kit.fontawesome.com/d839cb1a03.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
-<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-body border-bottom shadow-sm">
-  <img src="/images/sss.png" alt="" width="24" height="30">
-  <p class="h5 my-0 me-md-auto fw-normal"></p>
-  <nav class="my-2 my-md-0 me-md-3">
-    <a class="link-secondary" href="http://localhost:3000/">Новости</a>
-    <a class="link-secondary" href="http://localhost:3000/posts">Обучение</a>
-    <a class="link-secondary" href="http://localhost:3000/charity">Благотворительность</a>
-    <a class="link-secondary" href="http://localhost:3000/about">Бонусы</a>
+<body class="d-flex flex-column h-100">
+<header>
+  <nav class="navbar navbar-expand-md fixed-top p-3 px-md-4 bg-body border-bottom shadow-sm">
+    <div class="container-fluid">
+      <a href="/" class="navbar-brand no-hover py-1"><img src="/images/logo.png" alt="" width="24" height="30"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto mb-2 mb-md-0">
+          <li class="nav-item py-1">
+            <a class="me-5 text-dark text-decoration-none" href="/">Новости</a>
+          </li>
+          <li class="nav-item py-1">
+            <a class="me-5 text-dark text-decoration-none" href="/posts">Обучение</a></li>
+          <li class="nav-item py-1">
+            <a class="me-5 text-dark text-decoration-none" href="/charity">Благотворительность</a>
+          </li>
+          <li class="nav-item py-1">
+            <a class="me-5 text-dark text-decoration-none" href="/about">Бонусы</a></li>
+        </ul>
+        <%= render 'search/form' %>
+
+        <% if user_signed_in? %>
+          <%= link_to 'Аккаунт', current_user, class: "btn btn-outline-primary me-1 my-1" %>
+          <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary my-1" %>
+        <% else %>
+          <%= link_to 'Вход', new_user_session_path, class: "btn btn-outline-primary me-1 rounded-pill border border-dark my-1" %>
+          <%= link_to 'Регистрация', new_user_registration_path, class: "btn btn-outline-primary rounded-pill custom_color my-1" %>
+        <% end %>
+      </div>
+    </div>
   </nav>
-
-
-  <%= render 'search/form' %>
-
-  <% if user_signed_in? %>
-    <%= link_to 'Аккаунт', current_user, class: "btn btn-outline-primary" %>
-    <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary" %>
-  <% else %>
-    <%= link_to 'Вход', new_user_session_path, class: "btn btn-outline-primary me-1 rounded-pill border border-dark" %>
-    <%= link_to 'Регистрация', new_user_registration_path, class: "btn btn-outline-primary rounded-pill custom_color" %>
-  <% end %>
 </header>
 
 
@@ -48,31 +62,35 @@
   <p class="alert alert-danger" role="alert"><%= alert %></p>
 <% end %>
 
-<div class="container py-4">
-  <%= yield %>
-</div>
+<main class="flex-shrink-0">
+  <div class="container mb-5">
+    <%= yield %>
+  </div>
+</main>
 
-<footer class="pt-4 my-md-5 border-top px-md-4 color_footer">
-  <div class="row">
-    <div class="col-12 col-md">
-      <ul class="list-unstyled text-small">
-        <li><a class="link-secondary text-light" href="#">О нас</a></li>
-        <li><a class="link-secondary text-light" href="#">Присоединиться</a></li>
-        <li><a class="link-secondary text-light" href="#">Конфиденциальность</a></li>
-        <li><a class="link-secondary text-light" href="#">Наша команда</a></li>
-      </ul>
-      <small class="d-block mb-3 text-light">© 2021 Фёрстдог</small>
-    </div>
-    <div class="col-6 col-md">
-      <h5>Связаться с нами</h5>
-      <ul class="list-unstyled text-small">
-        <li class="link-secondary">+7 906 730 48 46</li>
-        <li class="link-secondary">first@dog.ru</li>
-      </ul>
-    </div>
-    <div class="col-6 col-md">
-      <h5>Подписаться на рассылку</h5>
-      <%= render 'subscribers/form' %>
+<footer class="pt-4 mt-auto border-top px-md-4 color_footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md">
+        <ul class="list-unstyled text-small">
+          <li><a class="link-secondary text-light" href="#">О нас</a></li>
+          <li><a class="link-secondary text-light" href="#">Присоединиться</a></li>
+          <li><a class="link-secondary text-light" href="#">Конфиденциальность</a></li>
+          <li><a class="link-secondary text-light" href="#">Наша команда</a></li>
+        </ul>
+        <small class="d-block mb-3 text-light">© 2021 Фёрстдог</small>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Связаться с нами</h5>
+        <ul class="list-unstyled text-small">
+          <li class="link-secondary">+7 906 730 48 46</li>
+          <li class="link-secondary">first@dog.ru</li>
+        </ul>
+      </div>
+      <div class="col-6 col-md">
+        <h5>Подписаться на рассылку</h5>
+        <%= render 'subscribers/form' %>
+      </div>
     </div>
   </div>
 </footer>

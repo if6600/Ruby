@@ -1,3 +1,6 @@
-<%= form_for :term, html: {class: "me-2"}, url: search_path, method: :get do |form|%>
-    <%= text_field_tag :term, params[:term], class: "form-control", placeholder: "Поиск.." %>
+<%= form_for :term, html: { class: "me-3" }, url: search_path, method: :get do |form| %>
+  <div class="search">
+    <i class="fa fa-search"></i>
+    <%= text_field_tag :term, params[:term], class: "form-control border-end-0 border", placeholder: "Поиск.." %>
+  </div>
 <% end %>
