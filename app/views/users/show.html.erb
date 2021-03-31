@@ -1,6 +1,7 @@
 <p>ID <%= @user.id %></p>
 <p>Email <%= @user.email %></p>
 <p>Никнейм <%= @user.username %></p>
+<p>Аватар <%= image_tag @user.image.url %> </p>
 <% if user_signed_in? && current_user.isadmin == true %>
   <p>Админ <%= @user.isadmin %></p>
 <% end %>

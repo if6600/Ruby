@@ -43,11 +43,11 @@
         <%= render 'search/form' %>
 
         <% if user_signed_in? %>
-          <%= link_to 'Аккаунт', current_user, class: "btn btn-outline-primary me-1 my-1" %>
-          <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary my-1" %>
+          <%= link_to 'Аккаунт', current_user, class: "btn btn-outline-primary custom_color my-1 me-1" %>
+          <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary custom_color my-1" %>
         <% else %>
-          <%= link_to 'Вход', new_user_session_path, class: "btn btn-outline-primary me-1 rounded-pill border border-dark my-1" %>
-          <%= link_to 'Регистрация', new_user_registration_path, class: "btn btn-outline-primary rounded-pill custom_color my-1" %>
+          <%= link_to 'Вход', new_user_session_path, class: "btn btn-outline-primary custom_color my-1 me-1" %>
+          <%= link_to 'Регистрация', new_user_registration_path, class: "btn btn-outline-primary custom_color my-1" %>
         <% end %>
       </div>
     </div>
