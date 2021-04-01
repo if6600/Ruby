@@ -1,36 +1,38 @@
 <h1>Обучение</h1>
-  <h3>Все статьи</h3>
+<h3>Все статьи</h3>
 
-  <% Category.all.each do |cat| %>
-    <%= link_to cat.name, posts_path(category: cat.name) %> <br>
-  <% end %>
+<% Category.all.each do |cat| %>
+  <%= link_to cat.name, posts_path(category: cat.name) %> <br>
+<% end %>
 
-  <div class="row row-cols-3 row-cols-md-6 g-4">
-    <% @posts.each do |post| %>
-      <div class="col">
-        <div class="card h-100">
-          <img src="<%= post.image %>" class="card-img-top" alt="">
-          <div class="card-body">
-            <h5 class="card-title"><%= post.title %></h5>
+<div class="row row-cols-4 row-cols-md-12 g-4">
+  <% @posts.each do |post| %>
+    <div class="col">
+      <div class="card h-100">
+        <img src="<%= post.image %>" class="card-img-top" alt="">
+        <div class="card-body">
+          <h5 class="card-title"><%= post.title %></h5>
+          <div>
+            <%= post.name %>
+            <%= post.title %>
+            <%= post.category.name %>
+            <%= post.content.html_safe %>
             <div>
-              <%= post.name %>
-              <%= post.title %>
-              <%= post.category.name %>
-              <%= post.content.html_safe %>
-              <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes' %>
-              <%= post.comments.count %> <%= (post.comments.count) == 1 ? 'Comment' : 'Commentes' %>
+              <span class="me-2"><%= post.likes.count %> <i class="far fa-heart"></i></span>
+              <span><%= post.comments.count %> <i class="far fa-comments"></i></span>
             </div>
           </div>
-          <div class="card-footer">
-            <%= link_to 'Показать', post, class: "btn btn-sm btn-outline-secondary custom_color" %>
-            <%= link_to 'Изменить', edit_post_path(post), class: "btn btn-sm btn-outline-secondary custom_color" %>
-            <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-sm btn-outline-secondary custom_color" %>
-          </div>
+        </div>
+        <div class="card-footer text-center">
+          <%= link_to 'Показать', post, class: "btn btn-sm btn-outline-secondary custom_color" %>
+          <%= link_to 'Изменить', edit_post_path(post), class: "btn btn-sm btn-outline-secondary custom_color" %>
+          <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-sm btn-outline-secondary custom_color" %>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
 
-  <%= link_to 'Новый пост', new_post_path %>
-  <br>
-  <%= link_to 'Новая категория', new_category_path %>
+<%= link_to 'Новый пост', new_post_path %>
+<br>
+<%= link_to 'Новая категория', new_category_path %>
