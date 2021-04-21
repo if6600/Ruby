@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'registration/registration'
   get 'bonuseshistory/bonuseshistory'
   get 'partners/partners'
   get 'bonusespopular/bonusespopular'
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
   get 'bonusespopular', to: 'bonusespopular#bonusespopular'
   get 'partners', to: 'partners#partners'
   get 'bonuseshistory', to: 'bonuseshistory#bonuseshistory'
+  get 'registration', to: 'registration#registration'
 
   root 'promo#index'
 

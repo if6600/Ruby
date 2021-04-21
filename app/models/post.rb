@@ -1,5 +1,8 @@
 	require 'elasticsearch/model'
 class Post < ApplicationRecord
+		scope :filter_by_user, -> (user) { where user: user }
+		scope :filter_by_category, -> (category) { where category: category }
+		scope :filter_by_starts_with, -> (name) { where("name like ?", "%#{name}%")}
 
 		include Elasticsearch::Model
 		include Elasticsearch::Model::Callbacks
