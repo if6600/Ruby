@@ -1,21 +1,20 @@
 class PostsController < ApplicationController
-  http_basic_authenticate_with :name => "admin", :password => "superstrongpassword", :except => [:index, :show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  http_basic_authenticate_with name: 'admin', password: 'superstrongpassword', except: %i[index show]
+  before_action :set_post, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
 
   # GET /posts
   # GET /posts.json
   def index
     @posts = Post.where(nil)
     filtering_params(params).each do |key, value|
-    @posts = @posts.public_send("filter_by_#{key}", value) if value.present?
+      @posts = @posts.public_send("filter_by_#{key}", value) if value.present?
     end
   end
 
   # GET /posts/1
   # GET /posts/1.json
-  def show
-  end
+  def show; end
 
   # GET /posts/new
   def new
@@ -23,8 +22,7 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /posts
   # POST /posts.json
@@ -67,17 +65,18 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    def filtering_params(params)
-  params.slice(:user, :category, :starts_with)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
   end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-    	params.require(:post).permit(:name, :title, :author1, :content, :image, :category_id)
-    end
+  def filtering_params(params)
+    params.slice(:user, :category, :starts_with)
+  end
+
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:name, :title, :author1, :content, :image, :category_id)
+  end
 end

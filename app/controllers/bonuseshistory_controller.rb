@@ -1,4 +1,3 @@
 class BonuseshistoryController < ApplicationController
-  def bonuseshistory
-  end
+  def bonuseshistory; end
 end

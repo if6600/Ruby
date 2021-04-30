@@ -1,4 +1,3 @@
 class PartnersController < ApplicationController
-  def partners
-  end
+  def partners; end
 end

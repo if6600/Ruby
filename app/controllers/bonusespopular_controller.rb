@@ -1,4 +1,3 @@
 class BonusespopularController < ApplicationController
-  def bonusespopular
-  end
+  def bonusespopular; end
 end

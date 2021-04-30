@@ -1,4 +1,3 @@
 class BonusesinfoController < ApplicationController
-  def bonusesinfo
-  end
+  def bonusesinfo; end
 end

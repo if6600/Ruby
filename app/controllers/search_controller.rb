@@ -1,19 +1,20 @@
 class SearchController < ApplicationController
   def search
-      if params[:term].nil?
-        @posts = []
-      else
-        term = params[:term]
-        @posts = Post.search term, fields: [:content], highlight:  true
-      end
+    if params[:term].nil?
+      @posts = []
+    else
+      term = params[:term]
+      @posts = Post.search term, fields: [:content], highlight: true
     end
+  end
+
   def self.search(query)
     __elasticsearch__.search(
       {
         query: {
           multi_match: {
             query: query,
-            fields: ['title', 'content']
+            fields: %w[title content]
           }
         },
         highlight: {

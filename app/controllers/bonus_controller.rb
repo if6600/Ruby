@@ -1,4 +1,3 @@
 class BonusController < ApplicationController
-  def bonuses
-  end
+  def bonuses; end
 end

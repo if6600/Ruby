@@ -1,4 +1,3 @@
 class RegistrationController < ApplicationController
-  def registration
-  end
+  def registration; end
 end
