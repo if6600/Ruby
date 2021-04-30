@@ -24,6 +24,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'carrierwave', '~> 2.0'
 gem 'ckeditor'
 gem 'devise', '~> 4.2'
+# code formatter
+gem 'rubocop', '~> 1.13', require: false
+gem 'rubocop-rails', require: false
 
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
@@ -37,7 +40,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -56,9 +59,6 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'jquery-rails'
