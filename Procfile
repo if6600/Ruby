@@ -1,2 +1,2 @@
-web: rails server -p 3000
+web:  rails server -p ${PORT:-5000} -e $RAILS_ENV
 release: rails db:migrate
