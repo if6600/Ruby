@@ -10,7 +10,6 @@
   <%= stylesheet_link_tag 'promo', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'posts', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'comments', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_link_tag 'about', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -30,15 +29,15 @@
       <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav mx-auto mb-2 mb-md-0">
           <li class="nav-item py-1">
-            <a class="me-5 text-dark text-decoration-none" href="/">Новости</a>
+            <%= link_to 'Новости', promo_path, class: "me-5 text-dark text-decoration-none" %>
           </li>
           <li class="nav-item py-1">
-            <a class="me-5 text-dark text-decoration-none" href="/posts">Обучение</a></li>
+            <%= link_to 'Обучение', posts_path, class: "me-5 text-dark text-decoration-none" %>
           <li class="nav-item py-1">
-            <a class="me-5 text-dark text-decoration-none" href="/charity">Благотворительность</a>
+            <%= link_to 'Благотворительность', charity_path, class: "me-5 text-dark text-decoration-none" %>
           </li>
           <li class="nav-item py-1">
-            <a class="me-5 text-dark text-decoration-none" href="/about">Бонусы</a></li>
+            <%= link_to 'Бонусы', bonuses_info_path, class: "me-5 text-dark text-decoration-none" %>
         </ul>
         <%= render 'search/form' %>
 
