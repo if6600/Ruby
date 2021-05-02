@@ -5,8 +5,6 @@ ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -24,9 +22,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'carrierwave', '~> 2.0'
 gem 'ckeditor'
 gem 'devise', '~> 4.2'
-# code formatter
-gem 'rubocop', '~> 1.13', require: false
-gem 'rubocop-rails', require: false
 
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
@@ -44,12 +39,16 @@ group :development, :test do
 end
 
 group :development do
+  gem 'sqlite3', '~> 1.4' # gem to use in development environment
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # code formatter
+  gem 'rubocop', '~> 1.13', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
@@ -58,6 +57,10 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+end
+
+group :production do
+  gem 'pg', '~> 1.2.3'     # gem to use in production environment
 end
 
 gem 'bootstrap', '~> 5.0.0.beta2'
