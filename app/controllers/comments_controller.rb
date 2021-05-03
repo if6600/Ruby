@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  http_basic_authenticate_with name: 'admin', password: 'superstrongpassword', only: :destroy
+  # http_basic_authenticate_with name: 'admin', password: 'superstrongpassword', only: :destroy
   def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(params[:comment].permit(:body).merge(user_id: current_user.id))

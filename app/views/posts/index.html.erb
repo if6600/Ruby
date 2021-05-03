@@ -32,8 +32,12 @@
         </div>
         <div class="card-footer text-center">
           <%= link_to 'Показать', post, class: "btn btn-sm btn-outline-secondary custom_color" %>
-          <%= link_to 'Изменить', edit_post_path(post), class: "btn btn-sm btn-outline-secondary custom_color" %>
-          <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-sm btn-outline-secondary custom_color" %>
+          <% if user_signed_in? %>
+            <% if post.user_id == current_user.id or current_user.isadmin %>
+              <%= link_to 'Изменить', edit_post_path(post), class: "btn btn-sm btn-outline-secondary custom_color" %>
+              <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-sm btn-outline-secondary custom_color" %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
