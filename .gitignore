@@ -33,7 +33,7 @@
 /config/master.key
 
 /node_modules
-react-1st/
+.DS_Store
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
