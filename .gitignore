@@ -33,6 +33,7 @@
 /config/master.key
 
 /node_modules
+react-1st/
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity

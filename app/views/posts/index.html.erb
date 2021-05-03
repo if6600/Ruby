@@ -40,6 +40,10 @@
   <% end %>
 </div>
 
-<%= link_to 'Новый пост', new_post_path %>
-<br>
-<%= link_to 'Новая категория', new_category_path %>
+<% if user_signed_in? %>
+  <%= link_to 'Новый пост', new_post_path %>
+  <br>
+  <% if current_user.isadmin %>
+    <%= link_to 'Новая категория', new_category_path %>
+  <% end %>
+<% end %>
