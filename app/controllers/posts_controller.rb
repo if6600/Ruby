@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  # http_basic_authenticate_with name: 'admin', password: 'superstrongpassword', except: %i[index show]
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :require_permission, except: %i[index show new]
   before_action :authenticate_user!, except: %i[index show]
 
   # GET /posts
@@ -66,9 +66,12 @@ class PostsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def require_permission
+    redirect_to root_path if (current_user != Post.find(params[:id]).user) || current_user.isadmin == false
   end
 
   def filtering_params(params)
