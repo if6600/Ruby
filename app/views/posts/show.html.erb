@@ -55,8 +55,8 @@
   <% if user_signed_in? %>
     <%= render "comments/form" %>
   <% else %>
-    <p>Please <%= link_to 'login', new_user_session_path %> or <%= link_to 'register', new_user_registration_path %> to
-      comment.</p>
+    <p>Пожалуйста, <%= link_to 'войдите', new_user_session_path %> или <%= link_to 'зарегистрируйтесь', new_user_registration_path %> для того,
+      чтобы оставить комментарий</p>
   <% end %>
 
   <div class="button6">
