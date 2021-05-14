@@ -65,4 +65,3 @@ end
 
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'jquery-rails'
-gem 'react-rails', '~> 2.6'

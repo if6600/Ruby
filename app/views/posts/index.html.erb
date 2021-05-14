@@ -2,7 +2,7 @@
 <h3>Все статьи</h3>
 
 <% Category.all.each do |cat| %>
-  <%= link_to cat.name, posts_path(category: cat.name) %> <br>
+  <%= link_to cat.name, posts_path(category: cat.id) %> <br>
 <% end %>
 
 <%= form_tag posts_path, :method => 'get' do %>

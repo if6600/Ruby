@@ -1,31 +1,23 @@
 ## Setup
 
-Install bundler:
+Install bundler
 ```bash
 gem install bundler
 ```
 
-Then run:
+Then
 ```bash
 bundle install
 ```
 
-Install Nodejs (see actual version in the [package.json](package.json)),\
-Then install **yarn** and project's dependencies:
-
-```bash
-npm install --global yarn
-yarn install
-```
-   
 ## Run
 
-Run migrations:
+Migrations:
 ```bash
 rails db:migrate RAILS_ENV=development
 ```
 
-Run server:
+Server:
 ```bash
 rails server -b 0.0.0.0 -p 3000 -e development
 ```

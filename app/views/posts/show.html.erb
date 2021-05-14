@@ -55,7 +55,8 @@
   <% if user_signed_in? %>
     <%= render "comments/form" %>
   <% else %>
-    <p>Пожалуйста, <%= link_to 'войдите', new_user_session_path %> или <%= link_to 'зарегистрируйтесь', new_user_registration_path %> для того,
+    <p>Пожалуйста, <%= link_to 'войдите', new_user_session_path %>
+      или <%= link_to 'зарегистрируйтесь', new_user_registration_path %> для того,
       чтобы оставить комментарий</p>
   <% end %>
 

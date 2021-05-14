@@ -1,10 +1,7 @@
 class LikesController < ApplicationController
   before_action :find_post
   before_action :find_like, only: [:destroy]
-  #  def create
-  #    @post.likes.create(user_id: current_user.id)
-  #    redirect_to post_path(@post)
-  #  end
+
   def create
     if already_liked?
       flash[:notice] = "You can't like more than once"

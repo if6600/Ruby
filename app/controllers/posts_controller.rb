@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where(nil)
+    @posts = current_user.isadmin == true ? Post.all : Post.where(is_published: true)
     filtering_params(params).each do |key, value|
       @posts = @posts.public_send("filter_by_#{key}", value) if value.present?
     end
@@ -14,7 +14,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
-  def show; end
+  def show
+    @comments = @post.comments.map { |i| { user: i.user, comment: i } }
+  end
 
   # GET /posts/new
   def new
@@ -80,6 +82,6 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:name, :title, :author1, :content, :image, :category_id)
+    params.require(:post).permit(:name, :title, :author1, :content, :image, :category_id, :is_published)
   end
 end
