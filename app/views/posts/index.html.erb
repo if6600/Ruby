@@ -1,10 +1,12 @@
 <h1>Обучение</h1>
+
 <h3>Все статьи</h3>
-
-<% Category.all.each do |cat| %>
-  <%= link_to cat.name, posts_path(category: cat.id) %> <br>
-<% end %>
-
+<div class="btn-group btn-group-sm" role="group">
+  <% Category.all.each do |cat| %>
+    <button type="button" class="btn btn-outline-primary"> <%= link_to cat.name, posts_path(category: cat.id) %></button>
+  <% end %>
+</div>
+<%= params %>
 <%= form_tag posts_path, :method => 'get' do %>
   <p>
     <%= text_field_tag :starts_with, params[:starts_with] %>
@@ -16,7 +18,7 @@
   <% @posts.each do |post| %>
     <div class="col">
       <div class="card h-100">
-        <img src="<%= post.image %>" class="card-img-top" alt="">
+        <%= image_tag post.image.url, class: "card-img-top" %>
         <div class="card-body">
           <h5 class="card-title"><%= post.title %></h5>
           <div>

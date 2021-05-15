@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = current_user.isadmin == true ? Post.all : Post.where(is_published: true)
+    @vars = params[:category]
     filtering_params(params).each do |key, value|
       @posts = @posts.public_send("filter_by_#{key}", value) if value.present?
     end
@@ -14,9 +15,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
-  def show
-    @comments = @post.comments.map { |i| { user: i.user, comment: i } }
-  end
+  def show; end
 
   # GET /posts/new
   def new
