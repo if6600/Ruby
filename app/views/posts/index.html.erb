@@ -1,55 +1,60 @@
 <h1>Обучение</h1>
 
-<h3>Все статьи</h3>
-<div class="btn-group btn-group-sm" role="group">
-  <% Category.all.each do |cat| %>
-    <button type="button" class="btn btn-outline-primary"> <%= link_to cat.name, posts_path(category: cat.id) %></button>
-  <% end %>
-</div>
-<%= params %>
-<%= form_tag posts_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :starts_with, params[:starts_with] %>
-    <%= submit_tag "Поиск", :name => nil %>
-  </p>
-<% end %>
+<h3><%= params[:category] ? Category.find(id = params[:category]).name : "Все статьи" %> </h3>
 
-<div class="row row-cols-4 row-cols-md-12 g-4">
+<div class="d-flex justify-content-between flex-wrap mb-4 align-items-start">
+  <nav class="my-1">
+    <ul class="pagination d-flex align-content-start flex-wrap">
+      <li class="page-item"><%= link_to 'Все', posts_path, class: "page-link text-decoration-none px-3 py-2" %></li>
+      <% Category.all.each do |cat| %>
+        <li class='<%= params[:category].to_i == cat.id_in_database.to_i ? "page-item active" : "page-item" %>'> <%= link_to cat.name, posts_path(category: cat.id), class: "page-link text-decoration-none px-3 py-2" %></li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <div class="d-flex justify-content-end my-1">
+    <div class="search posts-search">
+      <%= form_tag posts_path, html: { class: "me-3" }, method: :get do %>
+        <%= icon("fas", "search") %>
+        <%= text_field_tag :starts_with, params[:starts_with], class: "form-control border-end-0 border", placeholder: "Поиск.." %>
+        </div>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= link_to('Добавить', new_post_path, class: "btn custom_color ms-2 shadow-sm") %>
+      <% end %>
+      </div>
+
+</div>
+
+<div class="row row-cols-md-4 row-cols-sm-1 g-4">
   <% @posts.each do |post| %>
     <div class="col">
-      <div class="card h-100">
-        <%= image_tag post.image.url, class: "card-img-top" %>
+      <div class="card h-100 shadow-sm rounded">
+        <%= link_to(image_tag(post.image.url, class: "card-img-top"), post) %>
         <div class="card-body">
-          <h5 class="card-title"><%= post.title %></h5>
+          <h5 class="card-title"><%= link_to post.title, post, class: "text-dark" %></h5>
           <div>
             <%= post.name %>
             <%= post.title %>
             <%= post.category.name %>
             <%= post.content.html_safe %>
-            <div>
-              <span class="me-2"><%= post.likes.count %> <i class="far fa-heart"></i></span>
-              <span><%= post.comments.count %> <i class="far fa-comments"></i></span>
-            </div>
           </div>
         </div>
-        <div class="card-footer text-center">
-          <%= link_to 'Показать', post, class: "btn btn-sm btn-outline-secondary custom_color" %>
-          <% if user_signed_in? %>
-            <% if post.user_id == current_user.id or current_user.isadmin %>
-              <%= link_to 'Изменить', edit_post_path(post), class: "btn btn-sm btn-outline-secondary custom_color" %>
-              <%= link_to 'Удалить', post, method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-sm btn-outline-secondary custom_color" %>
+        <div class="card-footer d-flex justify-content-between">
+          <div>
+            <span class="me-1"><%= post.likes.count %> <%= icon("far", "heart") %></span>
+            <span><%= post.comments.count %> <%= icon("far", "comments") %> </span>
+          </div>
+          <div>
+            <% if user_signed_in? %>
+              <% if post.user_id == current_user.id or current_user.isadmin %>
+                <%= link_to(icon("fas", "pencil-alt"), edit_post_path(post), class: "me-1") %>
+                <%= link_to(icon("fas", "trash-alt"), method: :delete, data: { confirm: 'Вы уверены?' }) %>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
-
-<% if user_signed_in? %>
-  <%= link_to 'Новый пост', new_post_path %>
-  <br>
-  <% if current_user.isadmin %>
-    <%= link_to 'Новая категория', new_category_path %>
-  <% end %>
-<% end %>
