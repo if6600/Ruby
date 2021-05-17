@@ -24,7 +24,7 @@ class FavoritesController < ApplicationController
 
   def already_favorited?
     Favorite.where(user_id: current_user.id, post_id:
-    params[:post_id]).exists?
+      params[:post_id]).exists?
   end
 
   def find_post
