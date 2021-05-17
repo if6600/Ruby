@@ -1,31 +1,34 @@
-<p>ID <%= @user.id %></p>
-<p>Email <%= @user.email %></p>
-<p>Никнейм <%= @user.username %></p>
-<p>Аватар <%= image_tag @user.image.url if @user.image? %> </p>
-<% if user_signed_in? && current_user.isadmin == true %>
-  <p>Админ <%= @user.isadmin %></p>
-<% end %>
-<li class="list-inline-item">
-  <h5 class="font-weight-bold mb-0 d-block">Подписчики <%= @user.followers.count %></h5>
-</li>
-<li class="list-inline-item">
-  <h5 class="font-weight-bold mb-0 d-block">Подписки <%= link_to @user.followees.count, following_path %></h5>
-</li>
-<br>
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card p-3">
+    <div class="d-flex align-items-center">
+      <div class="image me-3">
+        <%= image_tag avatar_for(@user), size: "100x100", class: "rounded" %>
+      </div>
+      <div class="ml-3 w-100">
+        <h4 class="mb-0 mt-0">
+          <%= @user.username ? @user.username : "Нет никнейма" %>
+          <% if user_signed_in? && @user.id == current_user.id %>
+            <%= link_to(icon("fas", "pencil-alt"), edit_user_registration_path(@user), class: "h6") %>
+          <% end %>
+        </h4>
+        <span><%= @user.email %></span>
+        <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+          <div class="d-flex flex-column"><span class="articles">Статьи</span> <span class="number1">38</span></div>
+          <div class="d-flex flex-column"><span class="followers">Подписчики</span>
+            <span class="number2"><%= link_to @user.followees.count, following_path %></span></div>
+          <div class="d-flex flex-column"><span class="rating">Подписки</span>
+            <span class="number3"><%= @user.favorites.count %></span></div>
+        </div>
+        <div class="button mt-2 text-center">
+          <% if user_signed_in? && current_user.followees.include?(@user) %>
+            <%= button_to "Отписаться", unfollow_user_path, class: "btn btn-sm btn-primary w-50 ml-2 custom_color", method: :post %>
+          <% elsif user_signed_in? %>
+            <%= button_to "Подписаться", follow_user_path, class: "btn btn-sm btn-primary w-50 ml-2 custom_color", method: :post %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-В избранных <%= @user.favorites.count %> <%= (@user.favorites.count) == 1 ? 'Posts' : 'пост (а, ов)'%>
-<% @posts.each do |post| %>
-  <br><%= link_to post.title, post %>
-<% end %>
-
-<br>
-
-<% if user_signed_in? && @user.id == current_user.id %>
-    <%= link_to 'Изменить профиль', edit_user_registration_path %>
-<% elsif user_signed_in? && current_user.followees.include?(@user) %>
-    <h5><%= button_to "Отписаться", unfollow_user_path, method: "POST" %></h5>
-<% elsif user_signed_in? %>
-    <h5><%= button_to "Подписаться", follow_user_path, method: "POST"  %></h5>
-<% else %>
-<%# можно добавить кнопку для регистрации или что-нибудь ещё  %>
-<% end%>
+<!--В избранных <%#= @user.favorites.count %> <%#= (@user.favorites.count) == 1 ? 'Posts' : 'пост (а, ов)'%>-->

@@ -122,9 +122,10 @@ label {
   background-color: #84B3DB;
 }
 
-.custom_color:hover {
+.custom_color:hover,
+.custom_color:hover i {
   color: #FFFFFF;
-  background-color: #84B3DBE8;
+  background-color: #0b0324;
 }
 
 .custom_color-outline {

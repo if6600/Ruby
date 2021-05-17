@@ -2,58 +2,99 @@
 @import "font-awesome";
 
 .top_menu {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    height: 60px;
-    margin-bottom: 40px;
-    background: #DFDFDF;
-    opacity: 68%;
-    border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 40px;
+  background: #DFDFDF;
+  opacity: 68%;
+  border-bottom: 1px solid #ddd;
 }
 
 .top_menu a {
-    margin: 0 20px;
+  margin: 0 20px;
 }
 
 .no-hover:hover {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .search {
-    position: relative;
-    box-shadow: 0 0 40px rgba(51, 51, 51, .1)
+  position: relative;
+  box-shadow: 0 0 40px rgba(51, 51, 51, .1)
 }
 
 .search input {
-    text-indent: 18px;
+  text-indent: 18px;
 }
 
 .search i {
-    position: absolute;
-    top: 13px;
-    left: 10px
+  position: absolute;
+  top: 13px;
+  left: 10px
 }
 
 .posts-search {
-    max-width: 200px;
-    min-width: 100px;
+  max-width: 200px;
+  min-width: 100px;
 }
 
 nav a {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .navbar-toggler-icon {
-    background-image: none;
+  background-image: none;
 }
 
 .navbar-toggler-icon::before {
-    font-family: FontAwesome;
-    content: "\f0c9"; /* fa-bars, fa-navicon */
+  font-family: FontAwesome;
+  content: "\f0c9"; /* fa-bars, fa-navicon */
 }
 
 main > .container {
-    margin-top: 8rem !important;
+  margin-top: 8rem !important;
+}
+
+i {
+  color: #0b0324;
+}
+
+.page-link {
+  color: #0b0324;
+}
+
+.page-link:hover {
+  color: #0b0324;
+  background-color: #84B3DBE8;
+}
+
+.page-item.active .page-link {
+  z-index: 3;
+  color: #fff;
+  background-color: #84B3DBE8;
+  border-color: #84B3DBE8;
+}
+
+.card a i:hover,
+table a i:hover {
+  color: #84B3DBE8;
+}
+
+.card i.fa-heart:hover {
+  color: #730E15;
+}
+
+.link-btn {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.dropdown-item:active {
+  background-color: #84B3DBE8;
 }

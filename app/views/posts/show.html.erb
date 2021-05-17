@@ -1,71 +1,85 @@
-<div class="content_comments">
-  <%= image_tag(@post.image.url, alt: 'Image') if @post.image? %>
-
-  <p>
-    <strong>Заголовок:</strong>
-    <%= @post.title %>
-  </p>
-
-  <p>
-    <strong>Категория:</strong>
-    <%= @post.category.name %>
-  </p>
-
-  <p>
-    <strong>Автор:</strong>
-    <%= @post.user_id %>
-  </p>
-
-  <p>
-    <strong>Контент:</strong>
-    <%= @post.content.html_safe %>
-  </p>
-  <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes' %></p>
-  <p><%= @post.favorites.count %> <%= (@post.favorites.count) == 1 ? 'Favorite' : 'Favorites' %></p>
-
+<h1 class="h3 mb-4 fw-normal text-center">
+  <%= @post.title %>
   <% if user_signed_in? %>
-    <% pre_like = @post.likes.find { |like| like.user_id == current_user.id } %>
-    <% if pre_like %>
-      <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
-    <% else %>
-      <%= button_to 'Like', post_likes_path(@post), method: :post %>
+    <% if @post.user_id == current_user.id or current_user.isadmin %>
+      <%= link_to(icon("fas", "pencil-alt"), edit_post_path(@post), class: "h6") %>
     <% end %>
-
-    <% pre_favorite = @post.favorites.find { |favorite| favorite.user_id == current_user.id } %>
-    <% if pre_favorite %>
-      <%= button_to 'Remove from Favorite', post_favorite_path(@post, pre_favorite), method: :delete %>
-    <% else %>
-      <%= button_to 'Add to Favorite', post_favorites_path(@post), method: :post %>
-    <% end %>
-
   <% end %>
+</h1>
+
+<div class="row mb-2">
+  <div class="col-md-4 col-sm-12 mb-2 h6">
+    <%= image_tag(@post.image.url, class: "img-fluid") if @post.image? %>
+    <div class="d-flex justify-content-center mt-2">
+      <% if user_signed_in? %>
+        <% pre_like = @post.likes.find { |like| like.user_id == current_user.id } %>
+        <% pre_favorite = @post.favorites.find { |favorite| favorite.user_id == current_user.id } %>
+
+        <% if pre_like %>
+          <%= button_to post_like_path(@post, pre_like), class: "link-btn text-decoration-none", method: :delete do %>
+            <span class="me-3"><%= @post.likes.count %> <%= icon("fas", "heart", class: "liked") %></span>
+          <% end %>
+        <% else %>
+          <%= button_to post_likes_path(@post), class: "link-btn text-decoration-none", method: :post do %>
+            <span class="me-3"><%= @post.likes.count %> <%= icon("far", "heart") %></span>
+          <% end %>
+        <% end %>
+
+        <% if pre_favorite %>
+          <%= button_to post_favorite_path(@post, pre_favorite), class: "link-btn text-decoration-none", method: :delete do %>
+            <span class="me-3"><%= @post.favorites.count %> <%= icon("fas", "star", class: "favorited") %></span>
+          <% end %>
+        <% else %>
+          <%= button_to post_favorites_path(@post), class: "link-btn text-decoration-none", method: :post do %>
+            <span class="me-3"><%= @post.favorites.count %> <%= icon("far", "star") %></span>
+          <% end %>
+        <% end %>
+
+      <% else %>
+
+        <span class="me-1"><%= @post.likes.count %> <%= icon("far", "heart") %></span>
+        <span><%= @post.favorites.count %> <%= icon("far", "star") %> </span>
+      <% end %>
+    </div>
+
+  </div>
+
+  <div class="col-md-8 col-sm-12 mb-2">
+    <p><%= @post.content.html_safe %></p>
+    <span>
+      <strong>Категория:</strong>
+      <%= @post.category.name %>
+    </span>
+    <p>
+      <strong>Автор:</strong>
+      <%= link_to(User.find(@post.user_id).email, user_path(@post.user_id), class: "text-dark") %>
+    </p>
+  </div>
 </div>
-<br>
-<br>
-<div class="block_comments">
-  <h2>Комментарии</h2>
-  <div class="heartcomment"></div>
-  <%= render @post.comments %>
+
+<div class="row d-flex justify-content-center">
+  <div class="col-md-12">
+    <div class="headings d-flex justify-content-between align-items-center mb-3">
+      <h5>Комментарии</h5>
+    </div>
+    <%= render @post.comments %>
+  </div>
 </div>
-<br>
-<br>
-<div class="hideblock"></div>
-<div class="block_createcomments">
-  <h2>Добавить комментарий:</h2>
+
+<div class="row mt-4">
   <% if user_signed_in? %>
-    <%= render "comments/form" %>
+    <%= form_for([@post, @post.comments.build]) do |f| %>
+      <div class="field">
+        <%= f.text_area :body, class: "form-control border_color mb-1", placeholder: "Ваш комментарий" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Оставить комментарий", class: "btn btn-lg btn-primary rounded-pill custom_color" %>
+      </div>
+    <% end %>
+
   <% else %>
     <p>Пожалуйста, <%= link_to 'войдите', new_user_session_path %>
       или <%= link_to 'зарегистрируйтесь', new_user_registration_path %> для того,
       чтобы оставить комментарий</p>
   <% end %>
-
-  <div class="button6">
-    <% if user_signed_in? %>
-      <%= link_to 'Изменить', edit_post_path(@post) %> |
-    <% end %>
-    <div class="button7">
-      <%= link_to 'Вернуться', posts_path %>
-    </div>
-  </div>
 </div>

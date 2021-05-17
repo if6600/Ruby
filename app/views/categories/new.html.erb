@@ -1,9 +1,21 @@
-<main class="form-signin">
-<div class="text-center">
-<h1 class="h3 mb-3 fw-normal">Новая категория</h1>
+<div class="form-signin">
+  <h1 class="h3 mb-3 fw-normal text-center"><%= @action %> категорию</h1>
+  <%= form_with(model: @category) do |form| %>
+    <div class="field">
+      <%= form.text_field :name, class: "form-control border_color mb-1", placeholder: "Название" %>
+    </div>
+    <div class="field">
+      <%= form.text_field :description, class: "form-control border_color mb-1", placeholder: "Заметка" %>
+    </div>
+    <div class="field">
+      <%= form.label :display_in_navbar, "Показать в меню?" %>
+      <%= form.check_box :display_in_navbar, type: "checkbox" %>
+    </div>
 
-<%= render 'form', category: @category %>
+    <div class="actions">
+      <%= form.submit @action, class: "btn btn-lg btn-primary rounded-pill custom_color" %>
+      <%= link_to 'Вернуться', :back, class: "btn btn-lg btn-primary rounded-pill custom_color" %>
+    </div>
+  <% end %>
 
-<%= link_to 'Вернуться', categories_path %>
 </div>
-</main>
