@@ -10,7 +10,6 @@
   <%= stylesheet_link_tag params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag Ckeditor.cdn_url %>
-  <script src="https://kit.fontawesome.com/d839cb1a03.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -27,8 +26,19 @@
           <li class="nav-item py-1">
             <%= link_to 'Новости', promo_path, class: "me-5 text-dark text-decoration-none" %>
           </li>
-          <li class="nav-item py-1">
+          <li class="nav-item py-1 dropdown">
+            <% if user_signed_in? && current_user.isadmin %>
+              <a class="me-5 text-dark text-decoration-none dropdown-toggle" href="#" id="postsAdmin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Обучение
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="postsAdmin">
+                <li><%= link_to 'Статьи', posts_path, class: "me-5 text-dark text-decoration-none dropdown-item" %></li>
+                <li><%= link_to 'Категории', categories_path, class: "me-5 text-dark text-decoration-none dropdown-item" %></li>
+              </ul>
+          <% else %>
             <%= link_to 'Обучение', posts_path, class: "me-5 text-dark text-decoration-none" %>
+          <% end %>
+          </li>
           <li class="nav-item py-1">
             <%= link_to 'Благотворительность', charity_path, class: "me-5 text-dark text-decoration-none" %>
           </li>
@@ -38,11 +48,11 @@
         <%= render 'search/form' %>
 
         <% if user_signed_in? %>
-          <%= link_to 'Аккаунт', current_user, class: "btn btn-outline-primary custom_color my-1 me-1" %>
-          <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "btn btn-outline-primary custom_color my-1" %>
+          <%= link_to 'Аккаунт', current_user, class: "btn custom_color my-1 me-1" %>
+          <%= button_to 'Выйти', destroy_user_session_path, method: :delete, class: "btn custom_color my-1" %>
         <% else %>
-          <%= link_to 'Вход', new_user_session_path, class: "btn btn-outline-primary custom_color my-1 me-1" %>
-          <%= link_to 'Регистрация', new_user_registration_path, class: "btn btn-outline-primary custom_color my-1" %>
+          <%= link_to 'Вход', new_user_session_path, class: "btn custom_color my-1 me-1" %>
+          <%= link_to 'Регистрация', new_user_registration_path, class: "btn custom_color my-1" %>
         <% end %>
       </div>
     </div>
