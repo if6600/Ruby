@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   before_action :require_permission, except: %i[index show new]
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authorize, except: %i[index show]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = current_user.isadmin == true ? Post.all : Post.where(is_published: true)
+    @posts = user_signed_in? && current_user.isadmin == true ? Post.all : Post.where(is_published: true)
     @vars = params[:category]
     filtering_params(params).each do |key, value|
       @posts = @posts.public_send("filter_by_#{key}", value) if value.present?
