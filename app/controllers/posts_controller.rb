@@ -29,6 +29,16 @@ class PostsController < ApplicationController
     render 'new'
   end
 
+  def update_published
+    post = Post.find(params[:id])
+    if post.is_published
+      post.update_attribute :is_published, false
+    else
+      post.update_attribute :is_published, true
+    end
+    redirect_to posts_path
+  end
+
   # POST /posts
   # POST /posts.json
   def create
