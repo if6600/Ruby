@@ -3,6 +3,9 @@
   <% if user_signed_in? %>
     <% if current_user.isadmin %>
       <%= link_to(icon("fas", "pencil-alt"), edit_promo_path(@promo), class: "h6") %>
+      <%= button_to(promo_path, class: "link-btn h6", method: :delete) do %>
+        <%= icon("far", "trash-alt") %>
+      <% end %>
     <% end %>
   <% end %>
 </h1>

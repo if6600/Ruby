@@ -3,6 +3,9 @@
   <% if user_signed_in? %>
     <% if @post.user_id == current_user.id or current_user.isadmin %>
       <%= link_to(icon("fas", "pencil-alt"), edit_post_path(@post), class: "h6") %>
+      <%= button_to(post_path, class: "link-btn h6", method: :delete) do %>
+        <%= icon("far", "trash-alt") %>
+      <% end %>
     <% end %>
   <% end %>
 </h1>
