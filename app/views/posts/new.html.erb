@@ -21,9 +21,6 @@
         <%= form.text_field :title, class: "form-control border_color", placeholder: "Титул" %>
       </div>
       <div class="field">
-        <%= form.text_field :author1, class: "form-control border_color", placeholder: "Автор" %>
-      </div>
-      <div class="field">
         <%= form.label :category_id, "Категория" %>
         <%= form.select(:category_id, Category.pluck(:name, :id), {}, { class: "form-select border_color" }) %>
       </div>
