@@ -1,17 +1,6 @@
 <h1 class="h3 mb-4 fw-normal text-center"><%= @action %> новость </h1>
 
 <%= form_with(model: @promo, local: true) do |form| %>
-  <% if @promo.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger" role="alert">
-      <h2><%= pluralize(post.errors.count, "error") %> </h2>
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="row">
     <div class="col-md-6 col-sm-12">
       <div class="field">
