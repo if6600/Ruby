@@ -10,7 +10,6 @@ class Post < ApplicationRecord
   #
   # searchkick
 
-  validates :name, presence: true
   validates :title, presence: true,
                     length: { minimum: 5 }
 
