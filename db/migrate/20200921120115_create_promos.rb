@@ -6,4 +6,8 @@ class CreatePromos < CreatePosts
       prepare_columns(t)
     end
   end
+
+  def up
+    change_column_default :promos, :is_published, true
+  end
 end

@@ -1,7 +1,7 @@
-<h1 class="h3 mb-4 fw-normal text-center"><%= @action %> статью </h1>
+<h1 class="h3 mb-4 fw-normal text-center"><%= @action %> новость </h1>
 
-<%= form_with(model: @post, local: true) do |form| %>
-  <% if @post.errors.any? %>
+<%= form_with(model: @promo, local: true) do |form| %>
+  <% if @promo.errors.any? %>
     <div id="error_explanation" class="alert alert-danger" role="alert">
       <h2><%= pluralize(post.errors.count, "error") %> </h2>
       <ul>
@@ -16,10 +16,6 @@
     <div class="col-md-6 col-sm-12">
       <div class="field">
         <%= form.text_field :title, class: "form-control border_color", placeholder: "Название" %>
-      </div>
-      <div class="field">
-        <%= form.label :category_id, "Категория" %>
-        <%= form.select(:category_id, Category.pluck(:name, :id), {}, { class: "form-select border_color" }) %>
       </div>
       <div class="field">
         <%= form.label :image, "Изображение" %>

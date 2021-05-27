@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     resources :likes
     resources :favorites
   end
+  resources :promos do
+    resources :comments
+  end
   resources :subscribers
   resources :categories
 
@@ -30,9 +33,8 @@ Rails.application.routes.draw do
   end
   resources :bonuses
 
-  get 'promo', to: 'promo#index'
   get 'charity', to: 'charity#index'
   get 'search', to: 'search#search'
 
-  root 'promo#index'
+  root 'promos#index'
 end

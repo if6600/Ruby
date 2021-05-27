@@ -1,0 +1,21 @@
+<% @promos.each_with_index do |item, index| %>
+  <% if index == 0 %>
+    <div class="p-5 mb-4">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold"><%= item.title %></h1>
+        <h4 class="col-md-8"><%= item.content %></h4>
+        <%= link_to 'Подробнее', promo_path(item), class: "btn custom_color" %>
+      </div>
+    </div>
+    <div class="row align-items-md-stretch">
+  <% else %>
+    <div class="col">
+      <div class="h-100 p-5 bg-light border rounded-3">
+        <h2><%= item.title %></h2>
+        <p><%= item.content %></p>
+        <%= link_to 'Подробнее', promo_path(item), class: "btn custom_color" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+</div>
