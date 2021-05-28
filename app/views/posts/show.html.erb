@@ -6,6 +6,17 @@
       <%= button_to(post_path, class: "link-btn h6", method: :delete) do %>
         <%= icon("far", "trash-alt") %>
       <% end %>
+      <% if current_user.isadmin %>
+        <% if @post.is_published %>
+          <%= button_to(update_published_post_path(@post), method: :put, class: "link-btn h6", title: "Снять с публикации") do %>
+            <%= icon("fas", "ban") %>
+          <% end %>
+        <% else %>
+          <%= button_to(update_published_post_path(@post), method: :put, class: "link-btn h6", title: "Опубликовать") do %>
+            <%= icon("far", "check-circle") %>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
 </h1>

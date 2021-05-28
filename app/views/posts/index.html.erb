@@ -51,7 +51,6 @@
                 <%= button_to(post_path(post), method: :delete, class: "link-btn me-1", title: "Удалить") do %>
                   <%= icon("fas", "trash-alt") %>
                 <% end %>
-                <%#= link_to(icon("fas", "trash-alt"), class: "me-1", title: "Удалить") %>
                 <% if post.is_published %>
                   <%= button_to(update_published_post_path(post), method: :put, class: "link-btn me-1", title: "Снять с публикации") do %>
                     <%= icon("fas", "ban") %>

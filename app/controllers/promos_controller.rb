@@ -4,7 +4,7 @@ class PromosController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @promos = Promo.all
+    @promos = Promo.order(:created_at).reverse
   end
 
   def show; end
