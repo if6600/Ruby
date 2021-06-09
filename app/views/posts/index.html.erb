@@ -1,3 +1,7 @@
+<% set_meta_tags title: 'All Awesome Post Page', description: 'All this content huge af'%>
+<% set_meta_tags og: {
+    title: ['All Awesome Post Page']
+}  %>
 <h1>Обучение</h1>
 
 <h3><%= params[:category] ? Category.find(id = params[:category]).name : "Все статьи" %> </h3>
