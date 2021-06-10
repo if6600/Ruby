@@ -10,11 +10,11 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= stylesheet_link_tag params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application' %>
   <%= javascript_include_tag Ckeditor.cdn_url %>
 </head>
 
 <body class="d-flex flex-column h-100">
-<%= react_component 'Tests' %>
 <header>
   <nav class="navbar navbar-expand-md fixed-top p-3 px-md-4 bg-body border-bottom shadow-sm">
     <div class="container-fluid">
@@ -72,6 +72,7 @@
 
 <main class="flex-shrink-0">
   <div class="container mb-5">
+    <%= react_component 'Tests' %>
     <%= yield %>
   </div>
 </main>
