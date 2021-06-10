@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :require_permission, except: %i[index show new]
+  before_action :require_permission, except: %i[index show new create]
   before_action :authenticate_user!, except: %i[index show]
 
   # GET /posts
@@ -27,6 +27,16 @@ class PostsController < ApplicationController
   def edit
     @action = 'Изменить'
     render 'new'
+  end
+
+  def update_published
+    post = Post.find(params[:id])
+    if post.is_published
+      post.update_attribute :is_published, false
+    else
+      post.update_attribute :is_published, true
+    end
+    redirect_to posts_path
   end
 
   # POST /posts
@@ -85,6 +95,6 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:name, :title, :author1, :content, :image, :category_id, :is_published)
+    params.require(:post).permit(:title, :content, :image, :category_id, :is_published)
   end
 end

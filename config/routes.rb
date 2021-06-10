@@ -12,9 +12,15 @@ Rails.application.routes.draw do
   get 'users/:id/following', to: 'users#following', as: :following
 
   resources :posts do
+    member do
+      put 'update_published'
+    end
     resources :comments
     resources :likes
     resources :favorites
+  end
+  resources :promos do
+    resources :comments
   end
   resources :subscribers
   resources :categories
@@ -27,9 +33,8 @@ Rails.application.routes.draw do
   end
   resources :bonuses
 
-  get 'promo', to: 'promo#index'
   get 'charity', to: 'charity#index'
   get 'search', to: 'search#search'
 
-  root 'promo#index'
+  root 'promos#index'
 end

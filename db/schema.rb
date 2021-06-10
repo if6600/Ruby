@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_05_12_220955) do
+=======
+ActiveRecord::Schema.define(version: 2021_03_31_231007) do
+>>>>>>> 52d979e8d42af5cda9bd06114303d72e2c9d7fb1
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -31,13 +35,14 @@ ActiveRecord::Schema.define(version: 2021_05_12_220955) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commenter"
     t.text "body"
     t.integer "post_id", null: false
+    t.integer "promo_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["promo_id"], name: "index_comments_on_promo_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -67,18 +72,27 @@ ActiveRecord::Schema.define(version: 2021_05_12_220955) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "name"
     t.string "title"
     t.text "content"
+    t.string "image"
+    t.boolean "is_published", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "author"
-    t.string "author1"
-    t.string "image"
     t.integer "user_id", null: false
     t.integer "category_id", null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "promos", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "image"
+    t.boolean "is_published", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_promos_on_user_id"
   end
 
   create_table "subscribers", force: :cascade do |t|
@@ -103,6 +117,7 @@ ActiveRecord::Schema.define(version: 2021_05_12_220955) do
   end
 
   add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "promos"
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
@@ -110,4 +125,5 @@ ActiveRecord::Schema.define(version: 2021_05_12_220955) do
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
+  add_foreign_key "promos", "users"
 end

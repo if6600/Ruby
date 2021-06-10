@@ -1,0 +1,52 @@
+<h1 class="h3 mb-4 fw-normal text-center">
+  <%= @promo.title %>
+  <% if user_signed_in? %>
+    <% if current_user.isadmin %>
+      <%= link_to(icon("fas", "pencil-alt"), edit_promo_path(@promo), class: "h6") %>
+      <%= button_to(promo_path, class: "link-btn h6", method: :delete) do %>
+        <%= icon("far", "trash-alt") %>
+      <% end %>
+    <% end %>
+  <% end %>
+</h1>
+
+<div class="row mb-2">
+  <div class="col-md-4 col-sm-12 mb-2 h6">
+    <%= image_tag(@promo.image.url, class: "img-fluid") if @promo.image? %>
+  </div>
+
+  <div class="col-md-8 col-sm-12 mb-2">
+    <p><%= @promo.content.html_safe %></p>
+    <p>
+      <strong>Автор:</strong>
+      <%= link_to(User.find(@promo.user_id).email, user_path(@promo.user_id), class: "text-dark") %>
+    </p>
+  </div>
+</div>
+
+<div class="row d-flex justify-content-center">
+  <div class="col-md-12">
+    <div class="headings d-flex justify-content-between align-items-center mb-3">
+      <h5>Комментарии</h5>
+    </div>
+    <%= render @promo.comments %>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <% if user_signed_in? %>
+    <%= form_for([@promo, @promo.comments.build]) do |f| %>
+      <div class="field">
+        <%= f.text_area :body, class: "form-control border_color mb-1", placeholder: "Ваш комментарий" %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Оставить комментарий", class: "btn btn-lg btn-primary rounded-pill custom_color" %>
+      </div>
+    <% end %>
+
+  <% else %>
+    <p>Пожалуйста, <%= link_to 'войдите', new_user_session_path %>
+      или <%= link_to 'зарегистрируйтесь', new_user_registration_path %> для того,
+      чтобы оставить комментарий</p>
+  <% end %>
+</div>
