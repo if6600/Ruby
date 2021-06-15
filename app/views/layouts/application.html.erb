@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html class="h-100" lang="ru">
 <head>
-  <title>FirstDog</title>
   <%#= csrf_meta_tags %>
   <%#= csp_meta_tag %>
   <%= display_meta_tags(default_meta_tags) %>
@@ -72,7 +71,6 @@
 
 <main class="flex-shrink-0">
   <div class="container mb-5">
-    <%= react_component 'Tests' %>
     <%= yield %>
   </div>
 </main>

@@ -9,29 +9,27 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: 'AwesomeMediaService.com',
-      title: 'AwesomeMediaService',
+      site: 'FirstDog',
+      title: 'FirstDog',
       reverse: true,
       separator: '|',
-      description: 'Really awesome media-service',
+      description: 'FirstDog',
       keywords: 'hse, art, design',
       canonical: request.original_url,
       noindex: !Rails.env.production?,
       icon: [
-      #  { href: image_url('favicon.ico') },
-      #  { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
+        #  { href: image_url('favicon.ico') },
+        #  { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
       ],
       og: {
-        site_name: 'AwesomeMediaService.com',
-        title: 'AwesomeMediaService',
-        description: 'Really awesome media-service',
+        site_name: 'FirstDog',
+        title: 'FirstDog',
+        description: 'FirstDog',
         type: 'website',
         url: request.original_url,
-      #  image: image_url('login-page.png')
+        #  image: image_url('login-page.png')
       }
     }
   end
-
-
 
 end

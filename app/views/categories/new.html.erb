@@ -1,3 +1,9 @@
+<% set_meta_tags title: @action + ' категорию', description: 'Категории' %>
+<% set_meta_tags og: {
+  title: ['Категории']
+} %>
+
+
 <div class="form-signin">
   <h1 class="h3 mb-3 fw-normal text-center"><%= @action %> категорию</h1>
   <%= form_with(model: @category) do |form| %>

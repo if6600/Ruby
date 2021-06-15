@@ -1,3 +1,5 @@
+<% set_meta_tags title: 'Подписчики' , description: 'Подписчики пользователя' %>
+
 <% @follow.each do |follow| %>
   <br><%= link_to follow.followee_id, user_path(follow.followee_id)  %>
 <% end %>
