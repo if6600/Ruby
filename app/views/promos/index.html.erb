@@ -21,6 +21,13 @@
       <h1 class="display-5 fw-bold"><%= link_to item.title, promo_path(item) %></h1>
       <p class="col-md-8"><%= item.content.html_safe %></p>
       </div>
+      <div class="position-relative">
+        <div class="position-absolute bottom-0 start-0 m-2 tags">
+          <% item.tags.each do |tag| %>
+            <span> <%= tag %></span>
+          <% end %>
+        </div>
+      </div>
 
       <div class="row align-items-md-stretch">
     <% else %>
