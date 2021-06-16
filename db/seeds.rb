@@ -59,18 +59,24 @@ end
 promos = [
   {
     title: "Новость 1",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
     user_id: User.all.ids[0],
     image: File.open(Rails.root.join('public', 'images', 'promo1.jpg'))
   },
   {
     title: "Новость 2",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     user_id: User.all.ids[0],
     image: File.open(Rails.root.join('public', 'images', 'promo2.jpg'))
   },
   {
     title: "Новость 3",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    user_id: User.all.ids[0],
+    image: File.open(Rails.root.join('public', 'images', 'promo3.jpg'))
+  },
+  {
+    title: "Новость 4",
     content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     user_id: User.all.ids[0],
     image: File.open(Rails.root.join('public', 'images', 'promo3.jpg'))
