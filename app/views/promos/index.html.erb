@@ -4,28 +4,46 @@
 } %>
 
 <% if user_signed_in? && current_user.isadmin %>
-  <div class="d-flex justify-content-end my-1">
+  <div class="d-flex justify-content-end my-4">
     <%= link_to('Добавить', new_promo_path, class: "btn custom_color ms-2 shadow-sm") %>
   </div>
 <% end %>
-<% @promos.each_with_index do |item, index| %>
-  <% if index == 0 %>
-    <div class="p-5 mb-4">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold"><%= item.title %></h1>
-        <h4 class="col-md-8"><%= item.content.html_safe %></h4>
-        <%= link_to 'Подробнее', promo_path(item), class: "btn custom_color" %>
+<div class="promo-content">
+  <% @promos.each_with_index do |item, index| %>
+    <% if index == 0 %>
+
+      <% if item.image? %>
+        <div class="jumbotron text-white jumbotron-image shadow p-5 rounded-3" style="background-image: url(<%= item.image %>);">
+      <% end %>
+
+      <h1 class="display-5 fw-bold"><%= link_to item.title, promo_path(item) %></h1>
+      <p class="col-md-8"><%= item.content.html_safe %></p>
+      <% if item.image? %>
+        </div>
+      <% end %>
+
+      <div class="row align-items-md-stretch">
+    <% else %>
+      <div class="col mt-5">
+        <% if item.image? %>
+          <div class="jumbotron text-white jumbotron-image shadow rounded-3" style="background-image: url(<%= item.image %>);">
+        <% end %>
+        <div class="h-100 p-5">
+          <h2><%= link_to item.title, promo_path(item) %></h2>
+          <p><%= item.content.html_safe %></p>
+        </div>
+        <div class="position-relative">
+          <div class="position-absolute bottom-0 start-0 m-2 tags">
+            <% item.tags.each do |tag| %>
+              <span> <%= tag %></span>
+            <% end %>
+          </div>
+        </div>
+        <% if item.image? %>
+          </div>
+        <% end %>
       </div>
-    </div>
-    <div class="row align-items-md-stretch">
-  <% else %>
-    <div class="col">
-      <div class="h-100 p-5 bg-light border rounded-3">
-        <h2><%= item.title %></h2>
-        <p><%= item.content.html_safe %></p>
-        <%= link_to 'Подробнее', promo_path(item), class: "btn custom_color" %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
 </div>

@@ -2,3 +2,36 @@ form.button_to {
   display: initial;
 }
 
+.jumbotron-image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.promo-content h1,
+.promo-content h2,
+.promo-content h3,
+.promo-content h4,
+.promo-content p,
+.promo-content a,
+.promo-content span {
+  text-shadow: #0000006e 0.1em 0.1em 0.1em;
+  color: white;
+  text-decoration: none;
+}
+
+.promo-content a:hover {
+  color: #0b0324;
+}
+
+.promo-content p {
+  font-size: 15px;
+  line-height: 25px;
+}
+
+.tags span {
+  color: #0b0324c4;
+  background-color: #ffffffa8;
+  padding: 3px;
+  border-radius: 5px;
+}
