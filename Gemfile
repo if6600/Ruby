@@ -64,6 +64,7 @@ group :production do
   gem 'pg', '~> 1.2.3'     # gem to use in production environment
 end
 
+gem 'acts-as-taggable-on', '~> 7.0'
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'font-awesome-sass', '~> 5.15.1'
 gem 'jquery-rails'

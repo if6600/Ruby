@@ -1,5 +1,5 @@
 class PromosController < ApplicationController
-  before_action :set_promo, only: %i[show edit destroy]
+  before_action :set_promo, only: %i[show edit update destroy]
   before_action :require_permission, except: %i[index show new create]
   before_action :authenticate_user!, except: %i[index show]
 
@@ -62,7 +62,7 @@ class PromosController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def promo_params
-    params.require(:promo).permit(:title, :content, :image, :is_published)
+    params.require(:promo).permit(:title, :content, :image, :is_published, :tag_list)
   end
 
 end

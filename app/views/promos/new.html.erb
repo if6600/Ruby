@@ -15,6 +15,16 @@
         <%= form.label :image, "Изображение" %>
         <%= form.file_field :image, class: "form-control border_color rounded" %>
       </div>
+      <div class="field">
+        <%= form.label :tag_list, "Теги" %>
+        <%=
+          form.text_field :tag_list,
+                          class: "form-control border_color rounded",
+                          value: @promo.send(:tag_list).to_s,
+                          placeholder: 'rails, development'
+        %>
+      </div>
+
     </div>
     <div class="col-md-6 col-sm-12">
       <div class="field">

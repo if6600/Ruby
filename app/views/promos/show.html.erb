@@ -26,6 +26,10 @@
       <strong>Автор:</strong>
       <%= link_to(User.find(@promo.user_id).email, user_path(@promo.user_id), class: "text-dark") %>
     </p>
+    <p>
+      <strong>Теги:</strong>
+      <%= @promo.tags.join(", ") %>
+    </p>
   </div>
 </div>
 
