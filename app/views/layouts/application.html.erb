@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="h-100" lang="ru">
 <head>
-  <%#= csrf_meta_tags %>
+  <%= csrf_meta_tags %>
   <%#= csp_meta_tag %>
   <%= display_meta_tags(default_meta_tags) %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,53 +14,7 @@
 </head>
 
 <body class="d-flex flex-column h-100">
-<header>
-  <nav class="navbar navbar-expand-md fixed-top p-3 px-md-4 bg-body border-bottom shadow-sm">
-    <div class="container-fluid">
-      <%= react_component 'Q_logo', width: "30", height: "40"%>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div id="navbarCollapse" class="collapse navbar-collapse">
-        <ul class="navbar-nav mx-auto mb-2 mb-md-0">
-          <li class="nav-item py-1">
-            <%= link_to 'Новости', promos_path, class: "me-5 text-dark text-decoration-none" %>
-          </li>
-          <li class="nav-item py-1 dropdown">
-            <% if user_signed_in? && current_user.isadmin %>
-              <a class="me-5 text-dark text-decoration-none dropdown-toggle" href="#" id="postsAdmin" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Обучение
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="postsAdmin">
-                <li><%= link_to 'Статьи', posts_path, class: "me-5 text-dark text-decoration-none dropdown-item" %></li>
-                <li><%= link_to 'Категории', categories_path, class: "me-5 text-dark text-decoration-none dropdown-item" %></li>
-              </ul>
-          <% else %>
-            <%= link_to 'Обучение', posts_path, class: "me-5 text-dark text-decoration-none" %>
-          <% end %>
-          </li>
-          <li class="nav-item py-1">
-            <%= link_to 'Благотворительность', charity_path, class: "me-5 text-dark text-decoration-none" %>
-          </li>
-          <li class="nav-item py-1">
-            <%= link_to 'Бонусы', bonuses_info_path, class: "me-5 text-dark text-decoration-none" %>
-        </ul>
-        <%= render 'search/form' %>
-
-        <% if user_signed_in? %>
-          <%= link_to 'Аккаунт', current_user, class: "btn custom_color my-1 me-1" %>
-          <%= button_to 'Выйти', destroy_user_session_path, method: :delete, class: "btn custom_color my-1" %>
-        <% else %>
-          <%= link_to 'Вход', new_user_session_path, class: "btn custom_color my-1 me-1" %>
-          <%= link_to 'Регистрация', new_user_registration_path, class: "btn custom_color my-1" %>
-        <% end %>
-      </div>
-    </div>
-  </nav>
-</header>
-
-
+<%= react_component 'organisms/header/Header', menuItems: menu_navs, menuActions: menu_actions %>
 
 <% if notice %>
   <p class="notice"><%= notice %></p>
