@@ -1,12 +1,23 @@
 @import "bootstrap";
 
+@font-face {
+  font-family: Aeroport;
+  src: url(asset-path("Aeroport_Light.otf")) format("opentype");
+}
+
+@font-face {
+  font-family: Aeroport;
+  font-weight: bold;
+  src: url(asset-path("Aeroport_Bold.otf")) format("opentype");
+}
+
 body {
   background-color: #fff;
   color: #333;
 }
 
 body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'Aeroport', sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
