@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       { name: 'Новости', route: promos_path },
       { name: 'Обучение', route: posts_path },
       { name: 'Благотворительность', route: charity_path },
-      { name: 'Бонусы', route: bonuses_info_path }
+      { name: 'Бонусы', route: bonuses_path }
     ]
     menu_navs.push({ name: 'Категории', route: categories_path }) if user_signed_in? && current_user
     @menu_navs = menu_navs
