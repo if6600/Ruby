@@ -42,7 +42,7 @@
             <p><%= post.content.truncate(120, omission: '...').html_safe %></p>
           </div>
         </div>
-        <div class="card-body tags pt-0 pb-1">
+        <div class="card-body tags pt-0 pb-2">
           <% post.tags.each do |tag| %>
             <span> <%= tag %></span>
           <% end %>
