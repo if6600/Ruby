@@ -38,9 +38,8 @@
         <div class="card-body">
           <h5 class="card-title"><%= link_to post.title, post, class: "text-dark" %></h5>
           <div>
-            <%= post.title %>
             <%= post.category.name %>
-            <%= post.content.html_safe %>
+            <p><%= post.content.truncate(120, omission: '...').html_safe %></p>
           </div>
         </div>
         <div class="card-footer d-flex justify-content-between">
