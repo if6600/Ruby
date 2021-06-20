@@ -20,6 +20,10 @@ form.button_to {
   text-decoration: none;
 }
 
+.promo-content a {
+  text-decoration: none;
+}
+
 .promo-content a:hover {
   color: #0b0324;
 }
@@ -30,8 +34,9 @@ form.button_to {
 }
 
 .tags span {
-  color: #0b0324c4;
+  color: black;
   background-color: #ffffffa8;
-  padding: 3px;
+  padding: 1px 6px;
   border-radius: 5px;
+  margin: 0 2px;
 }
