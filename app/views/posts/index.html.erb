@@ -42,6 +42,11 @@
             <p><%= post.content.truncate(120, omission: '...').html_safe %></p>
           </div>
         </div>
+        <div class="card-body tags pt-0 pb-1">
+          <% post.tags.each do |tag| %>
+            <span> <%= tag %></span>
+          <% end %>
+        </div>
         <div class="card-footer d-flex justify-content-between">
           <div>
             <span class="me-1"><%= post.likes.count %> <%= icon("far", "heart") %></span>

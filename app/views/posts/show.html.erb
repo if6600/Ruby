@@ -73,6 +73,12 @@
       <strong>Автор:</strong>
       <%= link_to(User.find(@post.user_id).email, user_path(@post.user_id), class: "text-dark") %>
     </p>
+    <% if @post.tags %>
+      <p>
+        <strong>Теги:</strong>
+        <%= @post.tags.join(", ") %>
+      </p>
+    <% end %>
   </div>
 </div>
 

@@ -70,3 +70,29 @@
 form.button_to {
   display: initial;
 }
+
+.tags span {
+  color: black;
+  padding: 1px 6px;
+  border-radius: 5px;
+  margin: 0 2px;
+}
+
+.tags span:first-child {
+  background: #84b3db;
+}
+
+.tags span:nth-child(2) {
+  background: red;
+}
+
+.tags span:nth-child(3) {
+  background: blue;
+}
+
+.tags span:nth-child(4) {
+  background: green;
+}
+.tags span:nth-child(5) {
+  background: grey;
+}
