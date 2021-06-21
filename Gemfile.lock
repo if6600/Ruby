@@ -325,7 +325,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   jquery-rails
   listen (~> 3.2)
-  meta-tags
+  meta-tags (~> 2.14.0)
   pg (~> 1.2.3)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.3)

@@ -22,7 +22,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'carrierwave', '~> 2.0'
 gem 'ckeditor'
 gem 'devise', '~> 4.2'
-gem 'meta-tags'
+gem 'meta-tags', '~> 2.14.0'
 
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
