@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   # GET /posts
-  # GET /posts.json
   def index
     @posts = user_signed_in? && current_user.isadmin == true ? Post.all : Post.where(is_published: true)
     @vars = params[:category]
@@ -14,7 +13,6 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1
-  # GET /posts/1.json
   def show; end
 
   # GET /posts/new
@@ -40,42 +38,33 @@ class PostsController < ApplicationController
   end
 
   # POST /posts
-  # POST /posts.json
   def create
     @post = Post.new(post_params.merge(user_id: current_user.id))
-
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: 'Статья была успешно создана.' }
-        format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Статья была успешно обновлена.' }
-        format.json { render :show, status: :ok, location: @post }
       else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.html { render :new }
       end
     end
   end
 
   # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Статья была успешно удалена.' }
-      format.json { head :no_content }
     end
   end
 

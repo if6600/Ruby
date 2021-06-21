@@ -30,10 +30,8 @@ class PromosController < ApplicationController
     respond_to do |format|
       if @promo.save
         format.html { redirect_to @promo, notice: 'Новость была успешно создана.' }
-        format.json { render :show, status: :created, location: @promo }
       else
         format.html { render :new }
-        format.json { render json: @promo.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -42,10 +40,8 @@ class PromosController < ApplicationController
     respond_to do |format|
       if @promo.update(promo_params)
         format.html { redirect_to @promo, notice: 'Новость была успешно обновлена.' }
-        format.json { render :show, status: :ok, location: @promo }
       else
-        format.html { render :edit }
-        format.json { render json: @promo.errors, status: :unprocessable_entity }
+        format.html { render :new }
       end
     end
   end
