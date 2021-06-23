@@ -7,18 +7,8 @@
 
 @font-face {
   font-family: Aeroport;
-  src: url(asset-path("Aeroport_Light_Italic.otf")) format("opentype");
-}
-
-@font-face {
-  font-family: Aeroport;
   font-weight: bold;
   src: url(asset-path("Aeroport_Bold.otf")) format("opentype");
-}
-
-@font-face {
-  font-family: Aeroport;
-  src: url(asset-path("Aeroport_Bold_Italic.otf")) format("opentype");
 }
 
 @font-face {
@@ -29,18 +19,8 @@
 
 @font-face {
   font-family: Aeroport;
-  src: url(asset-path("Aeroport_Medium_Italic.otf")) format("opentype");
-}
-
-@font-face {
-  font-family: Aeroport;
   font-weight: bold;
   src: url(asset-path("Aeroport_Regular.otf")) format("opentype");
-}
-
-@font-face {
-  font-family: Aeroport;
-  src: url(asset-path("Aeroport_Regular_Italic.otf")) format("opentype");
 }
 
 @font-face {
@@ -67,6 +47,7 @@ pre {
 }
 
 a {
+  font-family: 'Aeroport', sans-serif;
   color: #000;
 }
 
@@ -197,4 +178,8 @@ label {
 
 .color_tags {
   background-color: #84B3DB;
+}
+
+.imgerror {
+  margin-left: 200px;
 }

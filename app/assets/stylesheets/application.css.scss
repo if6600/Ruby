@@ -1,5 +1,35 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "bootstrap";
+
+@font-face {
+  font-family: Aeroport;
+  src: url(asset-path("Aeroport_Light.otf")) format("opentype");
+}
+
+@font-face {
+  font-family: Aeroport;
+  font-weight: bold;
+  src: url(asset-path("Aeroport_Bold.otf")) format("opentype");
+}
+
+@font-face {
+  font-family: Aeroport;
+  font-weight: bold;
+  src: url(asset-path("Aeroport_Medium.otf")) format("opentype");
+}
+
+@font-face {
+  font-family: Aeroport;
+  font-weight: bold;
+  src: url(asset-path("Aeroport_Regular.otf")) format("opentype");
+}
+
+@font-face {
+  font-family: Aeroport;
+  font-weight: bold;
+  src: url(asset-path("Aeroport_Mono.otf")) format("opentype");
+}
 
 .top_menu {
   display: flex;
@@ -91,7 +121,6 @@ table a i:hover {
   background: none !important;
   border: none;
   padding: 0 !important;
-  text-decoration: underline;
   cursor: pointer;
 }
 
