@@ -4,64 +4,76 @@
 } %>
 
 <div class="custom_color_bg">
-  <h1 class="fw-bold text-white">Займись благотворительностью<br>вместе с ФЁРСТДОГ</h1>
+  <h1 class="fw-bold text-black">Займись благотворительностью<br>вместе с</h1>
+  <%= image_tag "naming.png", size: "400x400", class: "img-fluid d-block mx-auto" %>
 
   <div class="row g-5 py-5">
     <div class="col-md-4"></div>
     <div class="col-md-8">
       <%= image_tag "group_703.png", size: "650x650", class: "img-fluid mb-5 d-block mx-auto" %>
+      <%= link_to 'Присоединиться', bonuses_info_path, class: "link-secondary btn btn-lg btn-primary custom_color2" %>
     </div>
   </div>
 </div>
 
 <div class="custom_color_bg2">
-  <h1 class="fw-bold text-white">С помощью ФЁРСТДОГ</h1>
+  <h1 class="fw-bold text-white">Занимайся благотворительностью</h1>
 
   <div class="row g-5 py-5">
     <div class="col-md-4">
 
       <div class="feature mb-5">
-        <h2 class="fw-bolder text-white">Нашли свой дом</h2>
-        <h2 class="fw-bolder text-white">Являются нашими<br>проверенными партнерами</h2>
-        <h2 class="fw-bolder text-white">Собрано с помощью<br>медиа сервиса</h2>
-        <h2 class="fw-bolder text-white">В поддержку приютов<br>проведено за 2020 год</h2>
-        <h2 class="fw-bolder text-white">В приюты было организовано<br>за 2020 год</h2>
-        <%= image_tag "group_861.png", size: "350x350", class: "img-fluid mb-5 d-block mx-auto" %>
+        <%= image_tag "group_705.png", size: "850x850", class: "" %>
       </div>
 
     </div>
-
-    <div class="col-md-8">
-      <%= image_tag "group_704.png", size: "350x250", class: "img-fluid mb-5 d-block mx-auto" %>
-    </div>
-
   </div>
 </div>
 
+<div class="col-md-8">
+  <%= image_tag "group_704.png", size: "450x450", class: "img-fluid mb-5 d-block mx-auto" %>
+</div>
+
 <div class="custom_color_bg3">
-  <h1 class="fw-bold text-white">Фонды и организации</h1>
-  <h2 class="fw-bold text-white">Каждая организация является<br>нашим проверенным партнером</h2>
+  <h1 class="fw-bold text-black">Фонды и организации</h1>
+  <br>
+  <h2 class="fw-bold text-black">Каждая организация является<br>нашим проверенным партнером</h2>
 
   <div class="row g-5 py-5">
     <div class="col-md-4">
       <div class="feature mb-5">
-        <%= image_tag "mask_group.png", size: "350x250", class: "img-fluid d-block mx-auto" %>
-        <h5 class="text-white">Благотворительный фонд помощи животным<br>«Я свободен» активно помогает бездомным<br>животным,
-          животным, попавшим в непростую<br>ситуацию и людям, которым небезразлична их судьба.</h5>
+        <%= image_tag "mask_group.png", size: "100x100", class: "img-fluid d-block mx-auto" %>
+        <h6 class="text-black">Благотворительный фонд помощи животным<br>«Я свободен» активно помогает бездомным<br>животным,
+          животным, попавшим в непростую<br>ситуацию и людям, которым небезразлична их судьба.</h6>
         <button type="button" class="w-10 btn color_footer d-block mb-2">Перейти</button>
       </div>
 
       <div class="feature mb-5">
-        <%= image_tag "mask_group2.png", size: "350x250", class: "img-fluid d-block mx-auto" %>
-        <h5 class="text-white">Мы - Международный благотворительный фонд<br>помощи животным «Дарящие надежду» -
-          объединение<br>людей, верящих, что мы в силах помочь братьям<br>нашим меньшим.</h5>
+        <%= image_tag "mask_group3.png", size: "100x100", class: "img-fluid d-block mx-auto" %>
+        <h6 class="text-black">Основная цель деятельности фонда — помочь бездомным животным, а также приютам,<br> в которых они содержатся. В настоящее время мы работаем более чем с 40 приютами Москвы, Подмосковья и близлежащих областей.</h6>
+        <button type="button" class="w-10 btn color_footer d-block mb-2">Перейти</button>
+      </div>
+
+      <div class="feature mb-5">
+        <%= image_tag "mask_group2.png", size: "100x100", class: "img-fluid d-block mx-auto" %>
+        <h6 class="text-black">Мы - Международный благотворительный фонд<br>помощи животным «Дарящие надежду» - объединение<br>людей, верящих, что мы в силах помочь братьям<br>нашим меньшим.</h6>
         <button type="button" class="w-10 btn color_footer d-block mb-2">Перейти</button>
       </div>
     </div>
 
-    <div class="col-md-8">
-      <%= image_tag "vector_217.png", size: "350x250", class: "img-fluid d-block mx-auto" %>
+    <div class="custom_color_bg4">
+      <h1 class="fw-bold text-white">Каждому питомцу нужен дом</h1>
+      <br>
+      <%= link_to 'Выбрать фонд', bonuses_info_path, class: "link-secondary btn btn-lg btn-primary custom_color" %>
+
+      <div class="row g-5 py-5">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+          <%= image_tag "group_925.png", size: "450x450", class: "img-fluid mb-5 d-block mx-auto" %>
+        </div>
+      </div>
     </div>
+
 
   </div>
 </div>
