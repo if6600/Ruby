@@ -7,11 +7,19 @@
   src: url(asset-path("Aeroport_Light.otf")) format("opentype");
 }
 
-@font-face {
-  font-family: Aeroport;
-  font-weight: bold;
-  src: url(asset-path("Aeroport_Bold.otf")) format("opentype");
-}
+// @font-face {
+//   font-family: Aeroport;
+//   font-weight: bold;
+//   src: url(asset-path("Aeroport_Bold.otf")) format("opentype");
+// }
+
+// @font-face {
+// font-family: 'Aeroport_Bold';
+// src: url("/app/assets/fonts/Aeroport_Bold.otf") format("opentype");
+// line-height: 40px;
+// font-style: normal;
+// font-weight: normal;
+// }
 
 @font-face {
   font-family: Aeroport;
@@ -44,6 +52,7 @@ body, p, ol, ul, td {
 }
 
 pre {
+  font-family: 'Aeroport', sans-serif;
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
