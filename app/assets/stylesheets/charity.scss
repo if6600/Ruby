@@ -3,12 +3,43 @@ body {
   height: 100vh;
 }
 
-.custom_color_bg2 {
+.dark-bg {
   background: #0B0324 !important;
 }
 
-.custom_color_bg4 {
+.light-bg {
   background: #90C0E9 !important;
+}
+
+.charity-point h1 {
+  display: inline-block;
+}
+
+.charity-point h4 {
+  font-size: 15px;
+}
+
+.charity-point h1:first-child {
+  width: 200px;
+}
+
+.card {
+  border-color: transparent;
+}
+
+.card-body img,
+.card-body h6 {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.card-body h6 {
+  padding-top: 15px;
+  padding-left: 10px;
+}
+
+.card-body button {
+  margin-top: 10px;
 }
 
 .textcolor {

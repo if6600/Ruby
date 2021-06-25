@@ -23,9 +23,13 @@
 
 
 <main class="flex-shrink-0">
-  <div class="container mb-5">
+  <% if @do_not_render_container %>
     <%= yield %>
-  </div>
+  <% else %>
+    <div class="container mb-5">
+      <%= yield %>
+    </div>
+  <% end %>
 </main>
 
 <footer class="pt-4 mt-auto border-top px-md-4 color_footer">

@@ -65,7 +65,7 @@ promos = [
     content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
     user_id: User.all.ids[0],
     image: File.open(Rails.root.join('public', 'images', 'promo1.jpg')),
-  tag_list: %w[новости тег2]
+    tag_list: %w[новости тег2]
   },
   {
     title: "Новость 2",
