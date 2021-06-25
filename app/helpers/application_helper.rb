@@ -10,10 +10,10 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'FirstDog',
-      title: 'FirstDog',
+      title: 'Фёрстдог',
       reverse: true,
       separator: '|',
-      description: 'FirstDog',
+      description: 'Научись правильному уходу за собакой',
       keywords: 'hse, art, design',
       canonical: request.original_url,
       noindex: !Rails.env.production?,
