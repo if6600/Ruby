@@ -22,8 +22,8 @@ class ApplicationController < ActionController::Base
                       ]
                     else
                       [
-                        { name: 'Вход', route: new_user_session_path, method: '' },
-                        { name: 'Регистрация', route: new_user_registration_path, method: '' }
+                        { name: 'Регистрация', route: new_user_registration_path, method: '' },
+                        { name: 'Вход', route: new_user_session_path, method: '' }
                       ]
                     end
   end

@@ -15,12 +15,16 @@ puts "Created admin with id #{ admin.id }"
 
 categories = [
   {
-    name: "Коты",
-    description: "Категория о котах"
+    name: "Правила",
+    description: "Категория о полезных правилах для собак"
   },
   {
-    name: "Собаки",
-    description: "Категория о собаках"
+    name: "Опыт",
+    description: "Категория об опыте, о котором рассказали наши кинологи"
+  },
+  {
+    name: "Советы",
+    description: "Полезные советы о собаках"
   },
 ]
 
@@ -32,22 +36,51 @@ end
 
 posts = [
   {
-    title: "Шарик",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    title: "Чем кормить свою собаку?",
+    content: "Можно ли кормить собаку со стола?
+Ответ: можно, но ОЧЕНЬ осторожно!
+У каждой породы есть список запрещенных продуктов, которые давать не при каких обстоятельствах не следует (об этом лучше проконсультироваться с ветеринаром непосредственно на приеме и для конкретной собаки). Если говорить в общих чертах: собаке позволительно дать кусок нежирного, лучше вареного мяса и, при том, НЕбольшой (особенно это важно для маленьких собак). Мохнатик будет смотреть на Вас щенячьими глазками и вилять хвостиком всякий раз, как вы захотите покушать и вы должны научиться противостоять этому взгляду.
+
+Как часто?
+Вопрос очень расплывчатый, и ответ зависит от породы вашего питомца. В большинстве случаев- это 2-3 раза в день, небольшими порциями (переедать тоже плохо)
+
+Как не перекормить собаку?
+Для каждой породы есть весовые нормы приема корма, в зависимости от возраста и веса собаки. На все это нужно обращать внимание при выборе корма",
     is_published: true,
     user_id: User.all.ids[0],
     category_id: Category.all.ids[1],
-    image: File.open(Rails.root.join('public', 'images', 'picturedog.png')),
-    tag_list: %w[собаки помощь приют]
+    image: File.open(Rails.root.join('public', 'images', 'dogeat.png')),
+    tag_list: %w[Правила]
   },
   {
-    title: "Пушок",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    title: "Как гулять со своей собакой?",
+    content: "Давайте поговорим о выгуле собаки или как правильно гулять?
+
+Если вы не знали- с каждой собакой нужно гулять)
+
+Даже если это маленький шпундель, который помещается в ладошку!
+
+Итак, давайте для начала подразделим всех собачек на три основные группы и подробнее поговорим о каждой:
+
+1. Шпунтики- это собачки всех пород, вес которых в возрасте старше 1 года не превышает 7 кг)
+
+Многие считают, что маленьких собачек выгуливать не нужно, они могут существовать в квартире и ходить в туалет в лоток. Это очень распространенное ЗАБЛУЖДЕНИЕ. Конечно, физически животное может содержаться в таких условиях, но ключевое слово здесь физически.
+Вы лишите свою собаку возможности пробежаться на расстояние больше 4-5 метров по прямой, ее друзей во дворе, 10000 запахов, свежего воздуха, эмоциональной разгрузки и просто естественного образа жизни!
+Гулять со шпунтиками нужно 2-3 раза в день, больше- лучше. По 15-45 минут (больше гулять, особенно в активном темпе они устают), желательно наличие большого количество скверов без машин или, что идеально, леса/парка прямо у дома или в непосредственной близости. Ваш питомец скажет Вам спасибо)",
     is_published: true,
     user_id: User.all.ids[0],
     category_id: Category.all.ids[0],
-    image: File.open(Rails.root.join('public', 'images', 'picturecat.png')),
-    tag_list: %w[коты тег1]
+    image: File.open(Rails.root.join('public', 'images', 'gulat.png')),
+    tag_list: %w[Опыт]
+  },
+  {
+    title: "Самые важные правила на прогулке с собакой",
+    content: "Основная функция прогулки  собаки – это активность, это игра с вами и возня с друзьями из собачьего племени, это посещение «читального зала», это «побегать по собачьему чату» и отписаться всем друзьям и недругам в «личку», это исследование новой территории, это обязательный обход своей, уже известной местности и «укрепление пограничных столбов», это охота (если нет мышей или чего-нибудь похожего, то вполне сгодится любимая игрушка), это обучение новым важным вещам, это добывание еды, это «похвастаться» всем своим друзьям, какой Вы у нее замечательный хозяин, какая вы слаженная команда и как понимаете друг друга с полуслова.",
+    is_published: true,
+    user_id: User.all.ids[0],
+    category_id: Category.all.ids[0],
+    image: File.open(Rails.root.join('public', 'images', 'trava.png')),
+    tag_list: %w[Опыт]
   }
 ]
 
@@ -61,36 +94,31 @@ end
 
 promos = [
   {
-    title: "Новость 1",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
+    title: "Пушистый заплыв: фестиваль домашних животных",
+    content: "В Санкт-Петербурге провели спортивные игры для домашних животных и их хозяев.",
     user_id: User.all.ids[0],
-    image: File.open(Rails.root.join('public', 'images', 'promo1.jpg')),
-    tag_list: %w[новости тег2]
+    image: File.open(Rails.root.join('public', 'images', 'pushok.png')),
+    tag_list: %w[Разное]
   },
   {
-    title: "Новость 2",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    title: "Территория спасения бездомных собак в Липецке",
+    content: "Приют для бездомных животных Территория спасения г. Липецк - частный, существует на личные деньги руководителя, Екатерины Бильбао, волонтеров и пожертвования неравнодушных граждан. В приют попадают в основном кризисные животные, которым требуется срочная ветеринарная помощь. Сейчас на попечении приюта более 150 животных. За полтора года было спасено более 800 животных, пристроено в добрые руки более 650 животных.",
     user_id: User.all.ids[0],
-    image: File.open(Rails.root.join('public', 'images', 'promo2.jpg'))
+    image: File.open(Rails.root.join('public', 'images', 'bezdomni.png')),
+    tag_list: %w[Бездомные]
   },
   {
-    title: "Новость 3",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    title: "Кинолог объяснил, что делать, если навстречу бежит собака",
+    content: "Если животное бежит навстречу, нужно встать прямо и не двигаться. Нельзя кричать и убегать, размахивая руками, смотреть на собаку, потому что тревожный взгляд она может расценить как угрозу. Если вести себя правильно, скорее всего, собака просто подойдет обнюхать тебя и уйдет, — сказал Голубев.",
     user_id: User.all.ids[0],
-    image: File.open(Rails.root.join('public', 'images', 'promo3.jpg'))
+    image: File.open(Rails.root.join('public', 'images', 'kinolog.png'))
   },
   {
-    title: "Новость 4",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    title: "Лишенные голоса: волонтеры спасли собак с замотанными скотчем мордами",
+    content: "В Ленинградской области во дворе частного дома хозяева держали 6 собак в возрасте от 10 месяцев до 6 лет, заматывая им морды скотчем, чтобы не лаяли. Кормили и поили животных нерегулярно.
+Когда их обнаружили волонтеры, собаки были в критическом состоянии. Животных забрали и через объявления в соцсетях нашли им хозяев. Перед отправкой в новый дом собакам оказали ветеринарную помощь. Одну из них спасти не удалось. Из-за серьезных проблем со здоровьем двухлетняя Линда погибла.",
     user_id: User.all.ids[0],
-    image: File.open(Rails.root.join('public', 'images', 'promo2.jpg'))
-  },
-  {
-    title: "Новость 5",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    user_id: User.all.ids[0],
-    image: File.open(Rails.root.join('public', 'images', 'promo1.jpg')),
-    tag_list: %w[новости тег4 собаки]
+    image: File.open(Rails.root.join('public', 'images', 'scotch.png'))
   }
 ]
 

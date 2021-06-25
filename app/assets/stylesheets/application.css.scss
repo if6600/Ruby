@@ -293,3 +293,19 @@ table a i:hover {
   color: white;
   background-color: #0B0324;
 }
+
+#navbarCollapse > a:last-child {
+  background-color: white;
+  border: 1px solid black;
+  color: #0B0324;
+}
+
+#navbarCollapse > a:last-child:hover {
+  background-color: #84b3db;
+  border: 1px solid #84b3db;
+  color: white;
+}
+
+.text-dark {
+  text-decoration: none;
+}

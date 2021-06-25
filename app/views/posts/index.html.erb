@@ -38,8 +38,8 @@
         <div class="card-body">
           <h5 class="card-title"><%= link_to post.title, post, class: "text-dark" %></h5>
           <div>
-            <%= post.category.name %>
-            <p><%= post.content.truncate(120, omission: '...').html_safe %></p>
+            <%#= post.category.name %>
+            <p><%#= post.content.truncate(120, omission: '...').html_safe %></p>
           </div>
         </div>
         <div class="card-body tags pt-0 pb-2">
