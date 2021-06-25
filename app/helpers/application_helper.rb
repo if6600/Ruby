@@ -23,8 +23,8 @@ module ApplicationHelper
       ],
       og: {
         site_name: 'FirstDog',
-        title: 'FirstDog',
-        description: 'FirstDog',
+        title: 'Фёрстдог',
+        description: 'Научись правильному уходу за собакой',
         type: 'website',
         url: request.original_url,
         image: image_url('og-img.jpg')
