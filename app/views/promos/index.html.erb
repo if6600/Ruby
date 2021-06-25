@@ -1,7 +1,5 @@
 <% set_meta_tags title: 'Новости', description: 'Новости' %>
-<% set_meta_tags og: {
-  title: ['Новости']
-} %>
+
 <% if user_signed_in? && current_user.isadmin %>
   <div class="d-flex justify-content-end my-4">
     <%= link_to(icon('fas', 'plus', 'Добавить'), new_promo_path, class: "btn custom_color ms-2 shadow-sm") %>
