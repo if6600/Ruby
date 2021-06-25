@@ -5,7 +5,6 @@ const StyledNavLink = styled.a`
     text-decoration: none;
     padding: 4px 10px;
     :hover {
-        border-bottom: 1px solid;
         transition: .3s ease-in;
     }
 `
