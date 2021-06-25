@@ -13,9 +13,13 @@ form.button_to {
 .jumbotron-image h3,
 .jumbotron-image h4,
 .jumbotron-image p,
-.jumbotron-image a,
-.jumbotron-image span {
+.jumbotron-image a {
   text-shadow: #0000006e 0.1em 0.1em 0.1em;
+  color: white;
+  text-decoration: none;
+}
+
+.jumbotron-image span {
   color: white;
   text-decoration: none;
 }
