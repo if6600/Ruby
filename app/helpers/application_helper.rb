@@ -27,7 +27,7 @@ module ApplicationHelper
         description: 'FirstDog',
         type: 'website',
         url: request.original_url,
-        image: image_url('logo.png')
+        image: image_url('og-img.jpg')
       }
     }
   end
